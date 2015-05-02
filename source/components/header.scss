@@ -1,0 +1,117 @@
+header {
+	position: relative;
+	background: white;
+	margin: 0 auto;
+	padding: $unit/2 0;
+	
+	@media (max-width: 800px) { font-size: 0.9em; }
+	@media (max-width: 700px) { font-size: 0.8em; }
+	@media (max-width: 600px) { font-size: 0.7em; }
+	@media (max-width: 500px) { font-size: 0.6em; }
+	@media (max-width: 400px) { font-size: 0.5em; }
+	
+	.logo {
+		position: absolute;
+		text-align: center;
+		top: .5em;
+		left: 50%;
+		z-index: 0;
+		font-size: 5.5em;
+		font-family: 'Amatic SC';
+		transform: translateX(-50%);
+	}
+	
+	.bricks {
+		text-align: center;
+		letter-spacing: .15em;
+	}
+
+	row {
+		display: flex;
+		margin: 0 auto;
+	}
+	
+	block {
+		flex: 1 2 auto;
+		height: $unit + .5;
+		line-height: $unit + .5;
+		
+		&.in {
+			flex: 0 1 auto;
+		}
+		
+		&.glyphs {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			
+			a {
+				flex: 1 1 50%;
+				padding: $unit * .1;
+				max-width: $unit * .75;
+			}
+			
+			img {
+				max-width: 100%;
+				vertical-align: middle;
+			}
+		}
+		
+		a {
+			font-size: 1.1em;
+			text-transform: uppercase;
+		}
+	}
+	
+	space {
+		flex: 0 2 auto;
+	}
+	
+	.s2 { width: $unit * 2; }
+	.s4 { width: $unit * 4; }
+	.s5 { width: $unit * 5; }
+	.s6 { width: $unit * 6; }
+	.s7 { width: $unit * 7; }
+	.s8 { width: $unit * 8; }
+	.s10 { width: $unit * 10; }
+
+	.D { max-width: $unit * 30; }
+	.C { max-width: $unit * 28; }
+	.B { max-width: $unit * 26; }
+	.A { max-width: $unit * 24; }
+		
+	.D .out {
+		background-color: darken(hsl($hueD, $saturation, $lightness), 7%);
+		border-bottom: 6px solid darken(hsl($hueD, $saturation, $lightness), 10%);
+	}
+	
+	.C .in {
+		background-color: hsl($hueC, $saturation, $lightness);
+		border-bottom: 6px solid darken(hsl($hueC, $saturation, $lightness), 4%);
+	}
+	
+	.C .out {
+		background-color: darken(hsl($hueC, $saturation, $lightness), 7%);
+		border-bottom: 6px solid darken(hsl($hueC, $saturation, $lightness), 10%);
+	}
+	
+	.B .in {
+		background-color: hsl($hueB, $saturation, $lightness);
+		border-bottom: 6px solid darken(hsl($hueB, $saturation, $lightness), 4%);
+	}
+	
+	.B .out {
+		background-color: darken(hsl($hueB, $saturation, $lightness), 7%);
+		border-bottom: 6px solid darken(hsl($hueB, $saturation, $lightness), 10%);
+	}
+	
+	.A .in {
+		background-color: hsl($hueA, $saturation, $lightness);
+		border-bottom: 6px solid darken(hsl($hueA, $saturation, $lightness), 4%);
+	}
+	
+	.A .out {
+		background-color: darken(hsl($hueA, $saturation, $lightness), 7%);
+		border-bottom: 6px solid darken(hsl($hueA, $saturation, $lightness), 10%);
+	}
+}

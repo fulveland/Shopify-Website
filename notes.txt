@@ -1,0 +1,37 @@
+
+//structure
+shop
+category
+line
+variation
+item
+
+
+<!-- item info -->
+<p>price</p>
+<p>size</p>
+<p>variations</p> <!--will cause main-image to slide to the appropriate variation-->
+<p>description-1</p>
+<p>description-2</p>
+
+<!--line info-->
+<p>Sizing</p>
+<p>Gifting: the "product name" will fit most people. For more easy to gift items... </p>
+
+<p>Tips</p>
+<p>Putting it on</p>
+<p>Care</p>
+
+<!--For Shop Section-->
+<p>Payment</p>
+<p>info about payment</p>
+<p>Shipping</p>
+<p>info about shipping</p>
+<p>info about shipping as a gift</p>
+<p>Returns</p>
+<p>info about returns</p>
+
+
+<p>Have a question about the "product name"
+	shoot us a quick note</p>
+	

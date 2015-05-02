@@ -1,0 +1,282 @@
+<!doctype html>
+<html ng-app="FehuApp" page-style>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="styles.css">
+   <script src="libs.js"></script>
+   <script src="scripts.js"></script>
+   <title>Stinky Girls</title>
+</head>
+<body>
+   <header>
+	<a class="logo" href="#/">Fehu</a>
+	
+	<div class="bricks">
+		
+		<row class="D">
+			<block class="out s7"></block>
+			<space class="s10"></space>
+			<block class="out s7"></block>
+		</row>
+		
+		<row class="C">
+			<block class="out s6"><a href="#/bracelets">Bracelets</a></block>
+			<block class="in s2 glyphs" href="#/">
+				<a href="https://www.twitter.com"><img src="assets/twitter.png"></a>
+				<a href="https://www.pinterest.com"><img src="assets/pinterest.png"></a>
+			</block>
+			<space class="s8"></space>
+			<block class="in s2 glyphs" href="#/">
+				<a href="https://www.facebook.com"><img src="assets/facebook.png"></a>
+				<a href="https://www.instagram.com"><img src="assets/instagram.png"></a>
+			</block>
+			<block class="out s6"><a href="#/necklaces">Necklaces</a></block>
+		</row>
+		
+		<row class="B">
+			<block class="out s5"><a href="#/rings">Rings</a></block>
+			<block class="in s4"><a href="#/about">About</a></block>
+			<space class="s6"></space>
+			<block class="in s4"><a href="#/events">Events</a></block>
+			<block class="out s5"><a href="#/belts">Belts</a></block>
+		</row>
+		
+		<row class="A">
+			<block class="out s4"></block>
+			<block class="in s6"><a href="#/locations">Locations</a></block>
+			<space class="s4"></space>
+			<block class="in s6"><a href="#/wholesale">Wholesale</a></block>
+			<block class="out s4"></block>
+		</row>
+	</div>
+</header>
+   
+   <section>
+     <ng-view>
+     </ng-view>
+   </section>
+
+</body>
+</html>
+
+
+<script type="text/ng-template" id="about.html">
+
+	<h1>about</h1>
+
+</script>
+<script type="text/ng-template" id="events.html">
+
+	<h1>events</h1>
+
+</script>
+<script type="text/ng-template" id="locations.html">
+
+	<h1>Locations</h1>
+	
+	<h1>Find Us In Your Neck Of The Woods</h1>
+
+	<div>
+		<form>
+			<input type="text" ng-model="search.city" placeholder="City">
+			<select ng-model="searchProvince" ng-options="value for value in searchProvinces"></select>
+		</form>
+		
+		<div ng-show="!(locations | filter:search).length && (searchProvince == allProvinces)">Nobody here :(</div>
+		<div ng-show="!(countries['Canada'][searchProvince] | filter:search).length && (searchProvince != allProvinces)">Nobody here :(</div>
+		
+		<div class="country" ng-repeat="(countryName, provinceObj) in countries">
+			<div class="province" ng-repeat="(provinceName, locationList) in provinceObj" ng-show="showProvince(provinceName)">
+				<h2 class="province-name" ng-show="filteredLocations.length > 0">{{provinceName}}</h2>
+				<div class="location" ng-repeat="location in filteredLocations = (locationList | filter:search)">
+					<h3 class="name">{{location.name}}</h3>
+					<address>
+						<pre>{{location.address}}</pre>
+						<pre>{{location.city}}, {{location.province}}</pre>
+						<pre>{{location.postal}}</pre>
+						<pre ng-show="location.country != 'Canada'">{{location.country}}</pre>
+					</address>
+					<a ng-href="http://{{location.url}}" ng-show="location.url">Website</a>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</script>
+<script type="text/ng-template" id="shop.html">
+   <tot-cat></tot-cat>
+</script>
+<script type="text/ng-template" id="wholesale.html">
+	
+	<h2>Wholesale</h2>
+	
+	<p>This is my first time ordering from you yes/no</p>
+	
+	<p>Verification is easy so very very easy and stinky do not forget about stinky</p>
+	
+	<h2>Order</h2>
+	
+	<div class="calculator">
+		<div>47</div>
+		<div>Wrap Cuffs </div>
+		<div> X </div>
+		<div>$17</div>
+		<div>=</div>
+		<div>$0</div>
+	</div>
+	
+	<div class="order-line-up">
+		
+		<div class="product" ng-repeat="product in products">
+			<img src="{{product.image}}">
+			<div class="quantity">
+				<div class="plus button">-</div>
+				<div class="value">0</div>
+				<div class="minus button">+</div>
+			</div>
+		</div>
+
+	</div>
+	
+	<div class="calculator">
+		<div>47</div>
+		<div>Wrap Cuffs </div>
+		<div> X </div>
+		<div>$17</div>
+		<div>=</div>
+		<div>$0</div>
+		<br/>
+		<div>The total for your entire order is $300</div>
+	</div>
+	
+	<div class="order-form">
+	
+	
+	<p>My preffered delivery date is <input type="text"></input>.</p>
+	
+	<div class="button">Pay now</div>
+	
+	<div class="button">Pay later</div>
+	
+	</div>
+</script>
+
+<script type="text/ng-template" id="tot-cat.html"><tot-hero></tot-hero>
+<tot-info></tot-info>
+</script>
+<script type="text/ng-template" id="tot-hero.html"><img src="assets/raw-ring.jpg">
+</script>
+<script type="text/ng-template" id="tot-info.html"><item-info>
+	
+	<div class="name">
+		<h1>Turquoise</h1>
+		<h2>Coffee & Crystal Bracelet</h2>
+	</div>
+	
+	<descriptive-info>
+		<p class="character">
+			Peel back the bark on a spruce tree. A dozen shades of brown, porous spots, and subtle grains.
+		</p>
+		<p class="description">
+			The texture comes straight from the leather, so we only make this cuff from the rare spotted hide. A de-facto limited edition.
+		</p>
+	</descriptive-info>
+	
+	<key-info>
+		<div class="price">$34.00</div>
+		<!-- TODO: selecting an option will cause main-image to slide to the appropriate variation -->
+		<select class="variation">
+			<option>Spruce</option>
+			<option>Caribou</option>
+			<option>Beach House</option>
+			<option>UV</option>
+		</select>
+		<div class="size">8.5 inch and under</div>
+		<div class="add-to-cart">Add to Cart</div>
+	</key-info>
+	
+</item-info>
+
+<line-info>
+	<h3>Sizing</h3>
+	<p>
+		Wrap cuffs may be adjusted to fit most wrists with a circumference under 8.5 inches, and can be worn snugly-tight or slacked off.
+	</p>
+
+	<h3>Gifting</h3>
+	<p>
+		the "product name" will fit most women and men with the expeion of those with very large wrists.
+	</p>
+
+	<h3>Uniqueness</h3>
+	<p>
+		Every wrap cuff is individually hand cut, hand dyed, and hand sealed. Your wrap cuff will be one of a kind, similar to but distinguishable from the cuff photos featured up above.
+	</p>
+	
+	<h2>Tips</h2>
+	
+	<h3>Putting on a Wrap Cuff</h3>
+	<div class="tut">
+		<img src="assets/wrap-cuff-tut-1.png" />
+		<p>Loosen the cuff. Slide it onto your wrist.</p>
+	</div>
+	<div class="tut">
+		<img src="assets/wrap-cuff-tut-2.png" />
+		<p>Pull the tail to tighten.</p>
+	</div>
+	<div class="tut">
+		<img src="assets/wrap-cuff-tut-3.png" />
+		<p>Squeeze the sides. The slot will pop open.</p>
+	</div>
+	<div class="tut">
+		<img src="assets/wrap-cuff-tut-4.png" />
+		<p>Slip the tail back through the slot.</p>
+	</div>
+	
+	<h3>Extra tail? Tuck it in!</h3>
+	
+	<div class="tut">
+		<img src="assets/wrap-cuff-tut-5.png" />
+		<p>Pull the tail up...</p>
+	</div>
+	<div class="tut">
+		<img src="assets/wrap-cuff-tut-6.png" />
+		<p>...around...</p>
+	</div>
+	<div class="tut">
+		<img src="assets/wrap-cuff-tut-7.png" />
+		<p>....and down!</p>
+	</div>
+	
+	<h3>Life with a Wrap Cuff</h3>
+	<p>
+		Our wrap cuffs are made from the same type of leather as saddles. They take about a week to break in, gradually moulding to the wrist and becoming buttery soft. The bumps around the slits become more pronounced with wear, making them even easier to put on. They are double-sealed with resin, and then massaged with beeswax and oil.
+	</p>
+</line-info>
+
+
+<shop-info>
+	
+	<h3>Payment</h3>
+	<p>Payment methods include Paypal, Visa, Mastercard, American Express, and Discover. Credit card purchases can be processed through Paypal (you don't need a Paypal account for this) or through our direct checkout feature.
+		</br>
+		If you have any questions or problems completing your payment please do not hesitate to <a href="<!-- TODO: add a link so that when clicked it will scroll to the quick question form on the page -->">contact us</a>.
+	</p>
+	
+	<h3>Shipping</h3>
+	<p>
+		$5 Flat rate shipping within the US and Canada $10 to everywhere else. Please note that taxes, duties, VAT and customs fees associated with international shipping are the responsibility of the buyer.
+	</p>
+	
+	<h3>
+		Gifs
+	</h3>
+	<p>Gifts you will be able to ship your order as a gift. Just be sure to check to the "ship as a gift" box before you checkout.</div>
+	
+	<h3>Returns</h3>
+	<p>If for any reason your product does not meet your expectaions you have 60 days from date of purchase to return your purchase
+	
+	<h3>Questions</h3>
+	<p>Have a question about the "product name" shoot us a quick note we would love to hear from you.</div>
+</shop-info>
+</script>

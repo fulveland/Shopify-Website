@@ -1,0 +1,17 @@
+{
+  "name": "Fehu Shop",
+  "description": "A stinky website for fehu!",
+  "main": [
+    "public/index.html",
+    "public/libs.js",
+    "public/scripts.js",
+    "public/styles.css"
+  ],
+  "devDependencies": {
+    "angular": "angular#1.3.x",
+    "angular-route": "angular-route#1.3.x",
+    "angular-touch": "angular-touch#1.3.x",
+    "hammerjs": "hammerjs#2.x"
+  },
+  "private": true
+}
