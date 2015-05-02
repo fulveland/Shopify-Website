@@ -11,7 +11,8 @@
     "angular": "angular#1.3.x",
     "angular-route": "angular-route#1.3.x",
     "angular-touch": "angular-touch#1.3.x",
-    "hammerjs": "hammerjs#2.x"
+    "hammerjs": "hammerjs#2.x",
+    "cd-reset": "cdig/cd-reset"
   },
   "private": true
 }

@@ -1,27 +1,23 @@
 #wholesale {
+		
+	h2 {
+		padding: 1em 0;
+		text-align: center;
+	}
 	
-	section{
-		background: white;
-		
-		h2 {
-			padding: 1em 0;
-			text-align: center;
-		}
-		
-		p {
-			padding: 1em 0;
-			text-align: center;
-		}
-		
-		.calculator{
-			display: block;
-			text-align:center;
-			font-size: 1.5em;
-			padding: $unit;
-		
-			div{
-				display: inline-block;
-			}
+	p {
+		padding: 1em 0;
+		text-align: center;
+	}
+	
+	.calculator{
+		display: block;
+		text-align:center;
+		font-size: 1.5em;
+		padding: $unit;
+	
+		div{
+			display: inline-block;
 		}
 	}
 		
@@ -56,15 +52,16 @@
 		}
 	}
 	
-	.order-form{
+	.order-form {
 		text-align: center;
-	.button {
-		display:inline-block;
-		background: #FAFAFA;
-		height: $unit;
-		line-height: $unit;
-		padding: 0 $unit/2;
-		margin: $unit;
-	}
+		
+		.button {
+			display:inline-block;
+			background: #FAFAFA;
+			height: $unit;
+			line-height: $unit;
+			padding: 0 $unit/2;
+			margin: $unit;
+		}
 	}
 }

@@ -1,7 +1,6 @@
-section{
-	clear:both;
+ng-view {
 	display: block;
 	max-width: $unit * 20;
 	margin: 0 auto;
-	background: rgba(#fff, 0.95);
+	clear: both;
 }

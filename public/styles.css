@@ -1,12 +1,13 @@
 /* Known limitation: by default, Chrome and Safari on OS X allow very limited styling of `select`, unless a `border` property is set. */
 /**** GENERAL [optional] NICENESS ****/
-/* I don't like margins on headers (Ivan) */
+/* Zero-out "matter of taste" styles (Ivan) */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: 0; }
 
 /* Disable text selection for UI... (Ivan) */
@@ -23,19 +24,59 @@ p *,
 input,
 textarea,
 .selectable,
-.selectable * {
+.selectable *,
+[contentEditable] {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
   user-select: text;
   cursor: inherit; }
 
-/* Give links and inputs behaviour like real GUI elements (Ivan) */
+/* Editable elements deserve a text cursor (Ivan) */
+input,
+input.selectable,
+.selectable input,
+textarea,
+textarea.selectable,
+.selectable textarea,
+[contentEditable], [contentEditable].selectable, .selectable [contentEditable] {
+  cursor: text; }
+
+/* Links and inputs deserve a pointer (Ivan) */
 a,
+a.selectable,
+.selectable a,
 a *,
-input[type="submit"],
+a *.selectable,
+.selectable a *,
+label,
+label.selectable,
+.selectable label,
+button,
+button.selectable,
+.selectable button,
+input[type="button"],
+input[type="button"].selectable,
+.selectable input[type="button"],
 input[type="checkbox"],
-button {
+input[type="checkbox"].selectable,
+.selectable input[type="checkbox"],
+input[type="file"],
+input[type="file"].selectable,
+.selectable input[type="file"],
+input[type="image"],
+input[type="image"].selectable,
+.selectable input[type="image"],
+input[type="radio"],
+input[type="radio"].selectable,
+.selectable input[type="radio"],
+input[type="reset"],
+input[type="reset"].selectable,
+.selectable input[type="reset"],
+input[type="submit"],
+input[type="submit"].selectable,
+.selectable input[type="submit"],
+select, select.selectable, .selectable select {
   cursor: pointer; }
 
 /* Style links like their surrounding content (Ivan) */
@@ -51,6 +92,18 @@ progress,
 video {
   display: block; }
 
+/* Remove the outline around GUI (Ivan) */
+input,
+select,
+textarea {
+  outline: 0; }
+
+/* Remove the styling from fieldsets (Ivan) */
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
 /**** BEST PRACTICES ****/
 /* The page should fill the page! (Ivan) */
 html {
@@ -62,17 +115,6 @@ html {
 *:before,
 *:after {
   box-sizing: border-box; }
-
-/* Text inputs deserve a text cursor! (Ivan) */
-input[type="email"],
-input[type="number"],
-input[type="password"],
-input[type="search"],
-input[type="tel"],
-input[type="text"],
-input[type="url"],
-textarea {
-  cursor: text; }
 
 /* Remove the 2px border around iframes (Ivan) */
 iframe {
@@ -88,10 +130,10 @@ body {
   margin: 0; }
 
 /* Set display: block
-* 1. all HTML5 elements in IE 8/9
-* 2. details and summary in IE 10/11 and Firefox
-* 3. main in IE 11.
-*/
+ * 1. all HTML5 elements in IE 8/9
+ * 2. details and summary in IE 10/11 and Firefox
+ * 3. main in IE 11.
+ */
 article,
 aside,
 details,
@@ -100,6 +142,7 @@ figure,
 footer,
 header,
 main,
+menu,
 nav,
 section,
 summary {
@@ -119,10 +162,8 @@ audio:not([controls]) {
   display: none; }
 
 /* Address [hidden] styling not present in IE 8/9/10 */
-[hidden] {
-  display: none; }
-
 /* Hide the template element in IE 8/9/11, Safari, and Firefox < 22 */
+[hidden],
 template {
   display: none; }
 
@@ -191,9 +232,9 @@ samp {
   font-size: 1em; }
 
 /* 1. Correct color not being inherited. Known issue: affects color of disabled elements.
-* 2. Correct font properties not being inherited.
-* 3. Address margins set differently in Firefox, Safari, and Chrome.
-*/
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox, Safari, and Chrome.
+ */
 button,
 input,
 optgroup,
@@ -210,10 +251,19 @@ textarea {
 button {
   overflow: visible; }
 
+/* Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none; }
+
 /* 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
-* 2. Correct inability to style clickable `input` types in iOS.
-* 3. Improve usability and consistency of cursor style between image-type `input` and others.
-*/
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type `input` and others.
+ */
 button,
 html input[type="button"], input[type="reset"],
 input[type="submit"] {
@@ -238,17 +288,40 @@ input {
   line-height: normal; }
 
 /* It's recommended that you don't attempt to style these elements.
-* Firefox's implementation doesn't respect box-sizing, padding, or width.
-*
-* Remove excess padding in IE 8/9/10.
-*/
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * Remove excess padding in IE 8/9/10.
+ */
 input[type="checkbox"],
 input[type="radio"] {
   padding: 0; }
 
+/* Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/* 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
 /* Remove default vertical scrollbar in IE 8/9/10/11. */
 textarea {
   overflow: auto; }
+
+/* Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold; }
 
 /* Remove most spacing between table cells. */
 table {
@@ -300,15 +373,14 @@ html {
   color: #706F6D;
   background-color: white; }
 
-p {
-  margin: 0; }
-
-section {
-  clear: both;
+ng-view {
   display: block;
   max-width: 60rem;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.95); }
+  clear: both; }
+
+p {
+  margin: 0; }
 
 select {
   background: white;
@@ -322,7 +394,7 @@ header {
   position: relative;
   background: white;
   margin: 0 auto;
-  padding: 1.5rem 0; }
+  padding: 0 0 3rem; }
   @media (max-width: 800px) {
     header {
       font-size: 0.9em; } }
@@ -437,27 +509,12 @@ header {
     border-bottom: 6px solid #a5cfc4; }
 
 tot-cat {
-  display: block;
-  max-width: 60rem;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.95); }
+  display: block; }
 
 tot-hero {
-  position: relative; }
+  display: block; }
   tot-hero img {
-    width: 100%;
-    border-right: solid 20px #fff;
-    border-left: solid 20px #fff; }
-  tot-hero::after {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: 6px;
-    width: 100%;
-    height: 0.8rem;
-    background: rgba(136, 85, 68, 0.35);
-    z-index: 4; }
+    width: 100%; }
 
 item-info {
   display: block;
@@ -523,21 +580,21 @@ line-info, shop-info {
 shop-info {
   padding-bottom: 100px; }
 
-#wholesale section {
-  background: white; }
-  #wholesale section h2 {
-    padding: 1em 0;
-    text-align: center; }
-  #wholesale section p {
-    padding: 1em 0;
-    text-align: center; }
-  #wholesale section .calculator {
-    display: block;
-    text-align: center;
-    font-size: 1.5em;
-    padding: 3rem; }
-    #wholesale section .calculator div {
-      display: inline-block; }
+#wholesale h2 {
+  padding: 1em 0;
+  text-align: center; }
+
+#wholesale p {
+  padding: 1em 0;
+  text-align: center; }
+
+#wholesale .calculator {
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 3rem; }
+  #wholesale .calculator div {
+    display: inline-block; }
 
 #wholesale .order-line-up {
   text-align: center; }

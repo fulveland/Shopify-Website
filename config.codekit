@@ -250,6 +250,54 @@
 		"randomFootnoteNumbers": 0,
 		"useCompatibilityMode": 0
 		},
+	"\/bower_components\/cd-reset\/bower.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/cd-reset\/bower.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/bower_components\/cd-reset\/bower-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/bower_components\/cd-reset\/dist\/reset.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 1,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/cd-reset\/dist\/reset.scss",
+		"outputAbbreviatedPath": "\/public\/reset.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 0,
+		"useLibsass": 1
+		},
+	"\/bower_components\/cd-reset\/README.md": {
+		"criticStyle": 0,
+		"enableFootnotes": 0,
+		"enableLabels": 1,
+		"enableSmartQuotes": 1,
+		"escapeLineBreaks": 0,
+		"fileType": 4096,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bower_components\/cd-reset\/README.md",
+		"maskEmailAddresses": 1,
+		"outputAbbreviatedPath": "\/bower_components\/cd-reset\/README.html",
+		"outputFormat": 0,
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"parseMetadata": 1,
+		"processHTML": 0,
+		"randomFootnoteNumbers": 0,
+		"useCompatibilityMode": 0
+		},
 	"\/bower_components\/hammerjs\/bower.json": {
 		"fileType": 524288,
 		"ignore": 1,
@@ -501,101 +549,101 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Coffee-and-Crystals-Goldstone.jpg": {
+	"\/public\/assets\/coffee-and-crystals-goldstone.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 937408,
-		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Goldstone.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Goldstone.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-goldstone.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-goldstone.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Coffee-and-Crystals-Green-Turquoise.jpg": {
+	"\/public\/assets\/coffee-and-crystals-green-turquoise.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 969584,
-		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Green-Turquoise.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Green-Turquoise.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-green-turquoise.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-green-turquoise.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Coffee-and-Crystals-Howlite.jpg": {
+	"\/public\/assets\/coffee-and-crystals-howlite.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 814399,
-		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Howlite.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Howlite.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-howlite.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-howlite.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Coffee-and-Crystals-Jasper.jpg": {
+	"\/public\/assets\/coffee-and-crystals-jasper.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 976320,
-		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Jasper.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Jasper.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-jasper.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-jasper.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Coffee-and-Crystals-Lapis-2.jpg": {
+	"\/public\/assets\/coffee-and-crystals-lapis-2.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 958450,
-		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Lapis-2.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Lapis-2.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-lapis-2.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-lapis-2.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Coffee-and-Crystals-Lapis.jpg": {
+	"\/public\/assets\/coffee-and-crystals-lapis.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 936681,
-		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Lapis.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Lapis.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-lapis.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-lapis.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Coffee-and-Crystals-Light-Turquoise.jpg": {
+	"\/public\/assets\/coffee-and-crystals-light-turquoise.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 800841,
-		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Light-Turquoise.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Light-Turquoise.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-light-turquoise.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-light-turquoise.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Coffee-and-Crystals-Malachite.jpg": {
+	"\/public\/assets\/coffee-and-crystals-malachite.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 913853,
-		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Malachite.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Malachite.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-malachite.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-malachite.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Coffee-and-Crystals-Smokey-Quartz.jpg": {
+	"\/public\/assets\/coffee-and-crystals-smokey-quartz.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 1.13656e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Smokey-Quartz.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Smokey-Quartz.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-smokey-quartz.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-smokey-quartz.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -655,134 +703,134 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-1.jpg": {
+	"\/public\/assets\/fuzzy-cuff-1.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 368526,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-1.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-1.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-1.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-1.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-10.jpg": {
+	"\/public\/assets\/fuzzy-cuff-10.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 423593,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-10.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-10.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-10.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-10.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-11.jpg": {
+	"\/public\/assets\/fuzzy-cuff-11.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 409232,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-11.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-11.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-11.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-11.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-12.jpg": {
+	"\/public\/assets\/fuzzy-cuff-12.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 414584,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-12.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-12.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-12.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-12.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-2.jpg": {
+	"\/public\/assets\/fuzzy-cuff-2.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 400549,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-2.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-2.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-2.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-2.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-3.jpg": {
+	"\/public\/assets\/fuzzy-cuff-3.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 399998,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-3.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-3.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-3.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-3.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-4.jpg": {
+	"\/public\/assets\/fuzzy-cuff-4.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 373087,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-4.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-4.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-4.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-4.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-5.jpg": {
+	"\/public\/assets\/fuzzy-cuff-5.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 394815,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-5.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-5.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-5.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-5.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-6.jpg": {
+	"\/public\/assets\/fuzzy-cuff-6.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 395592,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-6.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-6.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-6.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-6.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-7.jpg": {
+	"\/public\/assets\/fuzzy-cuff-7.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 388984,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-7.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-7.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-7.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-7.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-8.jpg": {
+	"\/public\/assets\/fuzzy-cuff-8.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 435880,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-8.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-8.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-8.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-8.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Fuzzy-Cuff-9.jpg": {
+	"\/public\/assets\/fuzzy-cuff-9.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 451480,
-		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-9.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-9.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-9.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-9.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -1035,6 +1083,27 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/README.md": {
+		"criticStyle": 0,
+		"enableFootnotes": 0,
+		"enableLabels": 1,
+		"enableSmartQuotes": 1,
+		"escapeLineBreaks": 0,
+		"fileType": 4096,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/README.md",
+		"maskEmailAddresses": 1,
+		"outputAbbreviatedPath": "\/README.html",
+		"outputFormat": 0,
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"parseMetadata": 1,
+		"processHTML": 0,
+		"randomFootnoteNumbers": 0,
+		"useCompatibilityMode": 0
 		},
 	"\/source\/components\/header.html": {
 		"fileType": 8192,
@@ -1456,22 +1525,6 @@
 		"shouldRunBless": 0,
 		"useLibsass": 1
 		},
-	"\/source\/styles\/base\/reset.scss": {
-		"createSourceMap": 0,
-		"debugStyle": 0,
-		"decimalPrecision": 1,
-		"fileType": 4,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/source\/styles\/base\/reset.scss",
-		"outputAbbreviatedPath": "\/public\/reset.css",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"shouldRunAutoprefixer": 1,
-		"shouldRunBless": 0,
-		"useLibsass": 1
-		},
 	"\/source\/styles\/base\/vars.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -1536,6 +1589,22 @@
 		"shouldRunBless": 0,
 		"useLibsass": 1
 		},
+	"\/source\/styles\/elements\/ng-view.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 1,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/styles\/elements\/ng-view.scss",
+		"outputAbbreviatedPath": "\/public\/ng-view.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 0,
+		"useLibsass": 1
+		},
 	"\/source\/styles\/elements\/p.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -1545,22 +1614,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/source\/styles\/elements\/p.scss",
 		"outputAbbreviatedPath": "\/public\/p.css",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"shouldRunAutoprefixer": 1,
-		"shouldRunBless": 0,
-		"useLibsass": 1
-		},
-	"\/source\/styles\/elements\/section.scss": {
-		"createSourceMap": 0,
-		"debugStyle": 0,
-		"decimalPrecision": 1,
-		"fileType": 4,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/source\/styles\/elements\/section.scss",
-		"outputAbbreviatedPath": "\/public\/section.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
