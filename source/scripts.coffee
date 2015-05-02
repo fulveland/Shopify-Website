@@ -7,10 +7,6 @@
 # @codekit-append "pages/shop.coffee"
 # @codekit-append "pages/wholesale.coffee"
 
-# @codekit-append "/components/tot-cat.coffee"
-# @codekit-append "/components/tot-hero.coffee"
-# @codekit-append "/components/tot-info.coffee"
-
 angular.module "FehuApp", [
    # Libraries
    "ngRoute"
@@ -21,11 +17,6 @@ angular.module "FehuApp", [
    
    # Directives
    "PageStyle"
-   
-   # Components
-   "TotCat"
-   "TotHero"
-   "TotInfo"
    
    # Pages
    "About"

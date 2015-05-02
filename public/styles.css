@@ -363,10 +363,13 @@ th {
   font-style: italic; }
 
 a {
-  colour: rgba(85, 68, 51, 0.7); }
+  color: rgba(85, 68, 51, 0.7); }
 
 h1 {
   font-family: 'amatic'; }
+
+img {
+  vertical-align: middle; }
 
 html {
   font-family: caudex;
@@ -394,7 +397,7 @@ header {
   position: relative;
   background: white;
   margin: 0 auto;
-  padding: 0 0 3rem; }
+  padding: 0 0 1.8em; }
   @media (max-width: 800px) {
     header {
       font-size: 0.9em; } }
@@ -413,13 +416,14 @@ header {
   header .logo {
     position: absolute;
     text-align: center;
-    top: .5em;
+    top: 6em;
     left: 50%;
     z-index: 0;
-    font-size: 5.5em;
-    font-family: 'Amatic SC';
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%); }
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+    header .logo a {
+      font-size: 5.5em;
+      font-family: 'Amatic SC'; }
   header .bricks {
     text-align: center;
     letter-spacing: .15em; }
@@ -432,8 +436,8 @@ header {
     -webkit-flex: 1 2 auto;
         -ms-flex: 1 2 auto;
             flex: 1 2 auto;
-    height: 3.5rem;
-    line-height: 3.5rem; }
+    height: 3.5em;
+    line-height: 3.5em; }
     header block.in {
       -webkit-flex: 0 1 auto;
           -ms-flex: 0 1 auto;
@@ -508,78 +512,90 @@ header {
     background-color: #afd4ca;
     border-bottom: 6px solid #a5cfc4; }
 
-tot-cat {
-  display: block; }
+#shop .hero {
+  text-align: center; }
+  #shop .hero img {
+    width: 100%;
+    max-width: 100vh; }
 
-tot-hero {
-  display: block; }
-  tot-hero img {
-    width: 100%; }
+/*
 
 item-info {
-  display: block;
-  max-width: 48rem;
-  margin: 4em auto; }
-  item-info .name {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-align-items: baseline;
-        -ms-flex-align: baseline;
-            align-items: baseline; }
-    item-info .name h1 {
-      font-size: 4em;
-      margin: 0 0 0.2em; }
-  item-info descriptive-info {
-    font-size: 1.2em;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    margin: 2em 0 0; }
-    item-info descriptive-info .character {
-      font-style: italic;
-      margin-right: 3em; }
-  item-info key-info {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-align-items: baseline;
-        -ms-flex-align: baseline;
-            align-items: baseline;
-    max-width: 36rem;
-    font-size: 1.4em;
-    margin: 3em auto 0; }
-    item-info key-info .add-to-cart {
-      border-bottom: 1px solid #706F6D;
-      padding-bottom: .3em; }
+	display: block;
+	max-width: $unit * 16;
+	margin: 4em auto;
+	
+	.name {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		
+		h1 {
+			font-size: 4em;
+			margin: 0 0 .2em;
+		}
+	}
+	
+	descriptive-info {
+		font-size: 1.2em;
+		display: flex;
+		margin: 2em 0 0;
+		
+		.character {
+			font-style: italic;
+			margin-right: 3em;
+		}
+	}
+
+	key-info {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		max-width: $unit * 12;
+		font-size: 1.4em;
+		margin: 3em auto 0;
+		
+		.add-to-cart {
+			border-bottom: 1px solid $black;
+			padding-bottom: .3em;
+		}
+	}
+}
+
 
 line-info, shop-info {
-  display: block;
-  max-width: 36rem;
-  margin: 0 auto; }
-  line-info h3, shop-info h3 {
-    margin: 1em 0 0; }
-  line-info h2, shop-info h2 {
-    margin: 1.6em 0 0; }
-  line-info .tut, shop-info .tut {
-    width: 6.8rem;
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 1.5rem 0 0; }
-    line-info .tut img, shop-info .tut img {
-      width: 100%; }
-    line-info .tut p, shop-info .tut p {
-      text-align: center; }
+	display: block;
+	max-width: $unit * 12;
+	margin: 0 auto;
+	
+	h3 {
+		margin: 1em 0 0;
+	}
+	
+	h2 {
+		margin: 1.6em 0 0;
+	}
+	
+	.tut {
+		width: $unit * 2.25;
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 $unit/2 0 0;
+		
+		img{
+			width: 100%;
+		}
+		
+		p{
+			text-align: center;
+		}
+	}
+}
 
 shop-info {
-  padding-bottom: 100px; }
-
+	padding-bottom: 100px;
+}
+*/
 #wholesale h2 {
   padding: 1em 0;
   text-align: center; }
