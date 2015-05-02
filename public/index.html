@@ -59,6 +59,15 @@
 </body>
 </html>
 
+<script type="text/ng-template" id="variation.html"><div class="hero">
+	<img ng-src="{{variation.hero}}" ng-click="showing = !showing">
+</div>
+
+<div class="info" ng-show="showing">
+	I am stinky
+</div>
+</script>
+
 <script type="text/ng-template" id="about.html"><h1>about</h1>
 </script>
 <script type="text/ng-template" id="events.html"><h1>events</h1>
@@ -94,14 +103,9 @@
 </div>
 </script>
 <script type="text/ng-template" id="shop.html"><div class="product" ng-repeat="product in products">
-	<div class="variation" ng-repeat="variation in product.variations">
-		<div class="hero">
-			<img ng-src="{{variation.hero}}" ng-click="showing = !showing">
-		</div>
-		<div class="info" ng-show="showing">
-			I am stinky
-		</div>
-	</div>
+	<variation class="prev"    data="getVariation($index, -1)"></variation>
+	<variation class="current" data="getVariation($index,  0)"></variation>
+	<variation class="next"    data="getVariation($index, +1)"></variation>
 </div>
 </script>
 <script type="text/ng-template" id="wholesale.html"><h2>Wholesale</h2>

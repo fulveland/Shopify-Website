@@ -1,10 +1,5 @@
 <div class="product" ng-repeat="product in products">
-	<div class="variation" ng-repeat="variation in product.variations">
-		<div class="hero">
-			<img ng-src="{{variation.hero}}" ng-click="showing = !showing">
-		</div>
-		<div class="info" ng-show="showing">
-			I am stinky
-		</div>
-	</div>
+	<variation class="prev"    data="getVariation($index, -1)"></variation>
+	<variation class="current" data="getVariation($index,  0)"></variation>
+	<variation class="next"    data="getVariation($index, +1)"></variation>
 </div>

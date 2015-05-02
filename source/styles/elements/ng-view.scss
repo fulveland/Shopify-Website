@@ -1,6 +1,10 @@
 ng-view {
 	display: block;
+	
+	// Overriden by the shop page!
 	max-width: $unit * 20;
+	
+	
 	margin: 0 auto;
 	clear: both;
 }

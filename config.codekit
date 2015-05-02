@@ -626,13 +626,13 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/coffee-and-crystals-malachite.jpg": {
+	"\/public\/assets\/Coffee-and-Crystals-Malachite.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 913853,
-		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-malachite.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-malachite.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Malachite.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Malachite.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -780,13 +780,13 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/fuzzy-cuff-5.jpg": {
+	"\/public\/assets\/Fuzzy-Cuff-5.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 394815,
-		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-5.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-5.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-5.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-5.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -1112,6 +1112,44 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/source\/components\/header.scss",
 		"outputAbbreviatedPath": "\/public\/header.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 0,
+		"useLibsass": 1
+		},
+	"\/source\/components\/variation.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/variation.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/public\/variation.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
+	"\/source\/components\/variation.html": {
+		"fileType": 8192,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/variation.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/source\/components\/variation.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 1,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/variation.scss",
+		"outputAbbreviatedPath": "\/public\/variation.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
