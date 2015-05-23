@@ -1,6 +1,6 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "18917",
+"creatorBuild": "18966",
 "files": {
 	"\/bower.json": {
 		"fileType": 524288,
@@ -582,13 +582,13 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/coffee-and-crystals-jasper.jpg": {
+	"\/public\/assets\/Coffee-and-Crystals-Jasper.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 976320,
-		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-jasper.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-jasper.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Jasper.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Jasper.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -714,35 +714,35 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/fuzzy-cuff-10.jpg": {
+	"\/public\/assets\/Fuzzy-Cuff-10.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 423593,
-		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-10.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-10.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-10.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-10.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/fuzzy-cuff-11.jpg": {
+	"\/public\/assets\/Fuzzy-Cuff-11.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 409232,
-		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-11.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-11.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-11.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-11.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/fuzzy-cuff-12.jpg": {
+	"\/public\/assets\/Fuzzy-Cuff-12.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 414584,
-		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-12.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-12.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-12.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-12.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -802,13 +802,13 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/fuzzy-cuff-7.jpg": {
+	"\/public\/assets\/Fuzzy-Cuff-7.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 388984,
-		"inputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-7.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/fuzzy-cuff-7.jpg",
+		"inputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-7.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/Fuzzy-Cuff-7.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -1119,6 +1119,44 @@
 		"shouldRunBless": 0,
 		"useLibsass": 1
 		},
+	"\/source\/components\/product-info.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/product-info.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/public\/product-info.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
+	"\/source\/components\/product-info.html": {
+		"fileType": 8192,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/product-info.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/source\/components\/product-info.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 1,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/product-info.scss",
+		"outputAbbreviatedPath": "\/public\/product-info.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 0,
+		"useLibsass": 1
+		},
 	"\/source\/index.kit": {
 		"fileType": 2048,
 		"ignore": 0,
@@ -1253,15 +1291,6 @@
 		"shouldRunBless": 0,
 		"useLibsass": 1
 		},
-	"\/source\/pages\/shop-info.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/source\/pages\/shop-info.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/source\/pages\/shop.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -1351,6 +1380,19 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 0
 		},
+	"\/source\/scripts\/ease.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/scripts\/ease.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/public\/ease.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
 	"\/source\/scripts\/page-style.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -1364,6 +1406,32 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 0
 		},
+	"\/source\/scripts\/products.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/scripts\/products.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/public\/products.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
+	"\/source\/scripts\/pure-math.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/scripts\/pure-math.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/public\/pure-math.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
 	"\/source\/scripts\/routes.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -1372,6 +1440,45 @@
 		"inputAbbreviatedPath": "\/source\/scripts\/routes.coffee",
 		"minifyOutput": 0,
 		"outputAbbreviatedPath": "\/public\/routes.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
+	"\/source\/scripts\/scroll-animation.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/scripts\/scroll-animation.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/public\/scroll-animation.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
+	"\/source\/scripts\/scroll-jack.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/scripts\/scroll-jack.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/public\/scroll-jack.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
+	"\/source\/scripts\/stub-products.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/scripts\/stub-products.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/public\/stub-products.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,

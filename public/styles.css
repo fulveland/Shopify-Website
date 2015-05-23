@@ -518,44 +518,16 @@ header {
     background-color: #a5c9cf;
     border-bottom: 6px solid #9cc3c9; }
 
-#shop ng-view {
-  max-width: none;
-  padding-bottom: 1.4vmin; }
-
-#shop .product .variations {
-  position: relative;
-  height: 90vmin;
-  overflow: hidden; }
-  #shop .product .variations variation {
-    display: block;
-    position: absolute;
-    top: 0.7vmin;
-    left: 50%;
-    width: 90vmin;
-    margin-left: -45vmin;
-    padding: 1vmin; }
-    #shop .product .variations variation.prev, #shop .product .variations variation.next {
-      opacity: 0.2; }
-    #shop .product .variations variation.prev {
-      -webkit-transform: translateX(-100%);
-              transform: translateX(-100%); }
-    #shop .product .variations variation.next {
-      -webkit-transform: translateX(100%);
-              transform: translateX(100%); }
-    #shop .product .variations variation img {
-      width: 100%;
-      cursor: pointer; }
-
-#shop .product .info {
-  max-width: 88vmin;
+product-info {
+  display: block;
   margin: 0 auto;
   padding: 1em;
   background: white; }
-  #shop .product .info item-info {
+  product-info item-info {
     display: block;
     max-width: 48rem;
     margin: 4em auto; }
-    #shop .product .info item-info .name {
+    product-info item-info .name {
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
@@ -565,19 +537,19 @@ header {
       -webkit-align-items: baseline;
           -ms-flex-align: baseline;
               align-items: baseline; }
-      #shop .product .info item-info .name h1 {
+      product-info item-info .name h1 {
         font-size: 4em;
         margin: 0 0 0.2em; }
-    #shop .product .info item-info descriptive-info {
+    product-info item-info descriptive-info {
       font-size: 1.2em;
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       margin: 2em 0 0; }
-      #shop .product .info item-info descriptive-info .character {
+      product-info item-info descriptive-info .character {
         font-style: italic;
         margin-right: 3em; }
-    #shop .product .info item-info key-info {
+    product-info item-info key-info {
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
@@ -590,29 +562,57 @@ header {
       max-width: 36rem;
       font-size: 1.4em;
       margin: 3em auto 0; }
-      #shop .product .info item-info key-info .add-to-cart {
+      product-info item-info key-info .add-to-cart {
         border-bottom: 1px solid #706F6D;
         padding-bottom: .3em; }
-  #shop .product .info line-info, #shop .product .info shop-info {
+  product-info line-info, product-info shop-info {
     display: block;
     max-width: 36rem;
     margin: 0 auto; }
-    #shop .product .info line-info h3, #shop .product .info shop-info h3 {
+    product-info line-info h3, product-info shop-info h3 {
       margin: 1em 0 0; }
-    #shop .product .info line-info h2, #shop .product .info shop-info h2 {
+    product-info line-info h2, product-info shop-info h2 {
       margin: 1.6em 0 0; }
-    #shop .product .info line-info .tut, #shop .product .info shop-info .tut {
+    product-info line-info .tut, product-info shop-info .tut {
       width: 6.8rem;
       display: inline-block;
       vertical-align: top;
       margin: 0 1.5rem 0 0; }
-      #shop .product .info line-info .tut img, #shop .product .info shop-info .tut img {
+      product-info line-info .tut img, product-info shop-info .tut img {
         width: 100%; }
-      #shop .product .info line-info .tut p, #shop .product .info shop-info .tut p {
+      product-info line-info .tut p, product-info shop-info .tut p {
         text-align: center; }
-  #shop .product .info shop-info {
+  product-info shop-info {
     display: block;
     padding-bottom: 100px; }
+
+#shop ng-view {
+  max-width: none;
+  padding-bottom: 1.4vmin; }
+
+#shop .product .variations {
+  position: relative;
+  height: 90vmin;
+  overflow: hidden; }
+  #shop .product .variations .variation {
+    display: block;
+    position: absolute;
+    top: 0.7vmin;
+    left: 50%;
+    width: 90vmin;
+    margin-left: -45vmin;
+    padding: 1vmin; }
+    #shop .product .variations .variation.prev, #shop .product .variations .variation.next {
+      opacity: 0.2; }
+    #shop .product .variations .variation.prev {
+      -webkit-transform: translateX(-100%);
+              transform: translateX(-100%); }
+    #shop .product .variations .variation.next {
+      -webkit-transform: translateX(100%);
+              transform: translateX(100%); }
+    #shop .product .variations .variation img {
+      width: 100%;
+      cursor: pointer; }
 
 #wholesale h2 {
   padding: 1em 0;
