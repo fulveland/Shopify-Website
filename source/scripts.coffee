@@ -1,8 +1,6 @@
 # @codekit-append "scripts/page-style.coffee"
 # @codekit-append "scripts/routes.coffee"
 
-# @codekit-append "components/variation.coffee"
-
 # @codekit-append "pages/about.coffee"
 # @codekit-append "pages/events.coffee"
 # @codekit-append "pages/locations.coffee"
@@ -13,9 +11,6 @@ angular.module "FehuApp", [
    # Libs
    "ngRoute"
    "ngTouch"
-
-   # Components
-   "Variation"
    
    # Pages
    "About"

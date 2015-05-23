@@ -1,13 +1,12 @@
-$saturation: 30%;
-$lightness: 83%;
-
-$hueC: 81;
-$hueB: 33;
-$hueA: 164;
-$hueD: 200;
-
-$black: #706F6D;
-
+// SIZES
 $unit: 3rem;
 
-$clickMe: rgba(#543, 0.7);
+// COLORS
+$white: white;
+$black: #706F6D;
+$link: rgba(#543, 0.7);
+$header-link: $link;
+$D: hsl(167, 28%, 80%);
+$C: hsl( 45, 30%, 84%);
+$B: hsl( 15, 33%, 82%);
+$A: hsl(188, 30%, 80%);
