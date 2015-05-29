@@ -1,4 +1,5 @@
 # @codekit-append "components/product-info.coffee"
+# @codekit-append "components/variation-container.coffee"
 
 # @codekit-append "pages/about.coffee"
 # @codekit-append "pages/events.coffee"
@@ -22,6 +23,7 @@ angular.module "FehuApp", [
    
    # Components
    "ProductInfo"
+   "VariationContainer"
    
    # Pages
    "About"

@@ -1,38 +1,6 @@
 #shop {
-	
 	ng-view {
 		max-width: none;
 		padding-bottom: 1.4vmin;
-	}
-	
-	.product {
-		.variations {
-			position: relative;
-			height: 90vmin;
-			overflow: hidden;
-			
-			.variation {
-				display: block;
-				position: absolute;
-				top: 0.7vmin;
-				left: 50%;
-				width: 90vmin;
-				margin-left: -45vmin;
-				padding: 1vmin;
-				
-				&.prev, &.next {
-					opacity: 0.2;
-				}
-				
-				&.prev { transform: translateX(-100%); }
-				&.next { transform: translateX(100%); }
-					
-				img {
-					width: 100%;
-					cursor: pointer;
-					
-				}
-			}
-		}
 	}
 }

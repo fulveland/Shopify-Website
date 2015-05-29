@@ -1,6 +1,6 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "18966",
+"creatorBuild": "19033",
 "files": {
 	"\/bower.json": {
 		"fileType": 524288,
@@ -450,105 +450,6 @@
 		"randomFootnoteNumbers": 0,
 		"useCompatibilityMode": 0
 		},
-	"\/public\/assets\/bark-a.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 2.80369e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/bark-a.png",
-		"outputAbbreviatedPath": "\/public\/assets\/bark-a.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/bark-b.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 3.17395e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/bark-b.png",
-		"outputAbbreviatedPath": "\/public\/assets\/bark-b.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/bark-c.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 3.13726e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/bark-c.png",
-		"outputAbbreviatedPath": "\/public\/assets\/bark-c.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/blue-a.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1.57667e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/blue-a.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/blue-a.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/blue-b.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1.35455e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/blue-b.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/blue-b.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/blue-c.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1.37586e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/blue-c.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/blue-c.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/bubblegum-a.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1.46482e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/bubblegum-a.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/bubblegum-a.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/bubblegum-b.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1.35614e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/bubblegum-b.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/bubblegum-b.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/bubblegum-c.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1.7533e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/bubblegum-c.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/bubblegum-c.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/public\/assets\/Coffee-and-Crystals-Goldstone.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -593,17 +494,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/Coffee-and-Crystals-Lapis-2.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 958450,
-		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Lapis-2.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Lapis-2.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/public\/assets\/Coffee-and-Crystals-Lapis.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -637,6 +527,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/public\/assets\/coffee-and-crystals-pyrite.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 932148,
+		"inputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-pyrite.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/coffee-and-crystals-pyrite.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/public\/assets\/Coffee-and-Crystals-Smokey-Quartz.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -644,61 +545,6 @@
 		"initialSize": 1.13656e+06,
 		"inputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Smokey-Quartz.jpg",
 		"outputAbbreviatedPath": "\/public\/assets\/Coffee-and-Crystals-Smokey-Quartz.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/facebook.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1583,
-		"inputAbbreviatedPath": "\/public\/assets\/facebook.png",
-		"outputAbbreviatedPath": "\/public\/assets\/facebook.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/fehu-coffee-and-crystals-pyrite.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 932148,
-		"inputAbbreviatedPath": "\/public\/assets\/fehu-coffee-and-crystals-pyrite.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/fehu-coffee-and-crystals-pyrite.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/FIRE-a.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1.29936e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/FIRE-a.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/FIRE-a.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/FIRE-b.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1.17727e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/FIRE-b.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/FIRE-b.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/FIRE.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1.18585e+06,
-		"inputAbbreviatedPath": "\/public\/assets\/FIRE.jpg",
-		"outputAbbreviatedPath": "\/public\/assets\/FIRE.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -835,28 +681,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/instagram.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1505,
-		"inputAbbreviatedPath": "\/public\/assets\/instagram.png",
-		"outputAbbreviatedPath": "\/public\/assets\/instagram.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/public\/assets\/pinterest.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 105948,
-		"inputAbbreviatedPath": "\/public\/assets\/pinterest.png",
-		"outputAbbreviatedPath": "\/public\/assets\/pinterest.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/public\/assets\/raw-ring.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -868,13 +692,145 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/assets\/twitter.png": {
+	"\/public\/assets\/ui-glyph-facebook.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1583,
+		"inputAbbreviatedPath": "\/public\/assets\/ui-glyph-facebook.png",
+		"outputAbbreviatedPath": "\/public\/assets\/ui-glyph-facebook.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/ui-glyph-instagram.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1505,
+		"inputAbbreviatedPath": "\/public\/assets\/ui-glyph-instagram.png",
+		"outputAbbreviatedPath": "\/public\/assets\/ui-glyph-instagram.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/ui-glyph-pinterest.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 105948,
+		"inputAbbreviatedPath": "\/public\/assets\/ui-glyph-pinterest.png",
+		"outputAbbreviatedPath": "\/public\/assets\/ui-glyph-pinterest.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/ui-glyph-twitter.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 21602,
-		"inputAbbreviatedPath": "\/public\/assets\/twitter.png",
-		"outputAbbreviatedPath": "\/public\/assets\/twitter.png",
+		"inputAbbreviatedPath": "\/public\/assets\/ui-glyph-twitter.png",
+		"outputAbbreviatedPath": "\/public\/assets\/ui-glyph-twitter.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/wrap-cuff-bark-a.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2.80369e+06,
+		"inputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bark-a.png",
+		"outputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bark-a.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/wrap-cuff-bark-b.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3.17395e+06,
+		"inputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bark-b.png",
+		"outputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bark-b.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/wrap-cuff-bark-c.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3.13726e+06,
+		"inputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bark-c.png",
+		"outputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bark-c.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/wrap-cuff-blue-a.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.57667e+06,
+		"inputAbbreviatedPath": "\/public\/assets\/wrap-cuff-blue-a.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/wrap-cuff-blue-a.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/wrap-cuff-blue-b.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.35455e+06,
+		"inputAbbreviatedPath": "\/public\/assets\/wrap-cuff-blue-b.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/wrap-cuff-blue-b.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/wrap-cuff-blue-c.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.37586e+06,
+		"inputAbbreviatedPath": "\/public\/assets\/wrap-cuff-blue-c.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/wrap-cuff-blue-c.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/wrap-cuff-bubblegum-a.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.46482e+06,
+		"inputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bubblegum-a.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bubblegum-a.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/wrap-cuff-bubblegum-b.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.35614e+06,
+		"inputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bubblegum-b.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bubblegum-b.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/wrap-cuff-bubblegum-c.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.7533e+06,
+		"inputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bubblegum-c.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/wrap-cuff-bubblegum-c.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -1150,6 +1106,44 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/source\/components\/product-info.scss",
 		"outputAbbreviatedPath": "\/public\/product-info.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 0,
+		"useLibsass": 1
+		},
+	"\/source\/components\/variation-container.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/variation-container.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/public\/variation-container.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
+	"\/source\/components\/variation-container.html": {
+		"fileType": 8192,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/variation-container.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/source\/components\/variation-container.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 1,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/variation-container.scss",
+		"outputAbbreviatedPath": "\/public\/variation-container.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,

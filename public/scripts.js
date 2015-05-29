@@ -2,13 +2,39 @@
 (function() {
   var StubProducts;
 
-  angular.module("FehuApp", ["ngRoute", "ngTouch", "ProductInfo", "About", "Locations", "Shop", "Wholesale", "Ease", "PageStyle", "Products", "PureMath", "Routes", "ScrollAnimation", "ScrollJack", "StubProducts"]);
+  angular.module("FehuApp", ["ngRoute", "ngTouch", "ProductInfo", "VariationContainer", "About", "Locations", "Shop", "Wholesale", "Ease", "PageStyle", "Products", "PureMath", "Routes", "ScrollAnimation", "ScrollJack", "StubProducts"]);
 
   angular.module("ProductInfo", []).directive("productInfo", function() {
     return {
       templateUrl: "product-info.html",
       controller: function() {
         return "cool";
+      }
+    };
+  });
+
+  angular.module("VariationContainer", []).directive("variationContainer", function() {
+    return {
+      templateUrl: "variation-container.html",
+      link: function(scope, element, attrs) {
+        var dragged, dragging;
+        dragging = false;
+        dragged = false;
+        element.on("mousedown", function(e) {
+          e.preventDefault();
+          dragging = true;
+          return dragged = false;
+        });
+        element.on("mouseup", function(e) {
+          e.preventDefault();
+          return dragging = false;
+        });
+        return element.on("mousemove", function(e) {
+          e.preventDefault();
+          if (dragging) {
+            return dragged = true;
+          }
+        });
       }
     };
   });
@@ -223,7 +249,7 @@
   angular.module("Wholesale", []).controller("WholesaleCtrl", function($scope) {
     return $scope.products = [
       {
-        image: "assets/bark-a.png"
+        image: "assets/wrap-cuff-bark-a.png"
       }, {
         image: "assets/wrap-cuff-green.jpg"
       }, {
@@ -239,7 +265,7 @@
       }, {
         image: "assets/wrap-cuff-violet.jpg"
       }, {
-        image: "assets/bark-a.png"
+        image: "assets/wrap-cuff-bark-a.png"
       }, {
         image: "assets/wrap-cuff-green.jpg"
       }, {
@@ -255,7 +281,7 @@
       }, {
         image: "assets/wrap-cuff-violet.jpg"
       }, {
-        image: "assets/bark-a.png"
+        image: "assets/wrap-cuff-bark-a.png"
       }, {
         image: "assets/wrap-cuff-green.jpg"
       }, {
@@ -271,7 +297,7 @@
       }, {
         image: "assets/wrap-cuff-violet.jpg"
       }, {
-        image: "assets/bark-a.png"
+        image: "assets/wrap-cuff-bark-a.png"
       }, {
         image: "assets/wrap-cuff-green.jpg"
       }, {
@@ -475,14 +501,56 @@
       variations: [
         {
           hero: "assets/raw-ring.jpg"
-        }, {
-          hero: "assets/coffee-and-crystals-green-turquoise.jpg"
         }
       ]
     }, {
       variations: [
         {
+          hero: "assets/coffee-and-crystals-howlite.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-pyrite.jpg"
+        }, {
           hero: "assets/coffee-and-crystals-green-turquoise.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-light-turquoise.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-malachite.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-lapis.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-jasper.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-smokey-quartz.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-goldstone.jpg"
+        }
+      ]
+    }, {
+      variations: [
+        {
+          hero: "assets/fuzzy-cuff-1.jpg"
+        }, {
+          hero: "assets/fuzzy-cuff-2.jpg"
+        }, {
+          hero: "assets/fuzzy-cuff-3.jpg"
+        }, {
+          hero: "assets/fuzzy-cuff-4.jpg"
+        }, {
+          hero: "assets/fuzzy-cuff-5.jpg"
+        }, {
+          hero: "assets/fuzzy-cuff-6.jpg"
+        }, {
+          hero: "assets/fuzzy-cuff-7.jpg"
+        }, {
+          hero: "assets/fuzzy-cuff-8.jpg"
+        }, {
+          hero: "assets/fuzzy-cuff-9.jpg"
+        }, {
+          hero: "assets/fuzzy-cuff-10.jpg"
+        }, {
+          hero: "assets/fuzzy-cuff-11.jpg"
+        }, {
+          hero: "assets/fuzzy-cuff-12.jpg"
         }
       ]
     }

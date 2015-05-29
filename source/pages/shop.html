@@ -1,18 +1,6 @@
 <div class="product" ng-repeat="product in products">
-	<div class="variations">
-		<div class="variation prev">
-			<img ng-src="{{getVariation($index, -1).hero}}">
-		</div>
-		
-		<div class="variation current" ng-click="showing = !showing" scroll-jack>
-			<img ng-src="{{getVariation($index, 0).hero}}">
-		</div>
-		
-		<div class="variation next">
-			<img ng-src="{{getVariation($index, 1).hero}}">
-		</div>
-		
-	</div>
+	
+	<variation-container set-showing="showing"></variation-container>
 	
 	<product-info ng-show="showing"></product-info>
 	

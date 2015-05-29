@@ -4,7 +4,7 @@ angular.module "ScrollJack", []
 	controller: ($scope, $element)->
 		$element.on "click", ()->
 			
-			# THIS IS FRAGILE AND BAD
+			# FIXME: THIS IS FRAGILE AND BAD
 			if !$scope.showing
 				
 				rect = $element[0].getBoundingClientRect()
