@@ -13,28 +13,94 @@
     };
   });
 
-  angular.module("VariationContainer", []).directive("variationContainer", function() {
+  angular.module("VariationContainer", []).directive("variationContainer", function($swipe) {
     return {
       templateUrl: "variation-container.html",
       link: function(scope, element, attrs) {
-        var dragged, dragging;
-        dragging = false;
-        dragged = false;
-        element.on("mousedown", function(e) {
-          e.preventDefault();
-          dragging = true;
-          return dragged = false;
-        });
-        element.on("mouseup", function(e) {
-          e.preventDefault();
-          return dragging = false;
-        });
-        return element.on("mousemove", function(e) {
-          e.preventDefault();
-          if (dragging) {
-            return dragged = true;
+        var actual, after, apply, before, child, current, epsilon, handlers, i, len, next, prev, ref, requestUpdate, size, slider, start, target, update, willUpdate;
+        actual = target = start = 0;
+        epsilon = 0.5;
+        willUpdate = false;
+        slider = element.children().children();
+        before = prev = current = next = after = null;
+        size = null;
+        ref = slider.children();
+        for (i = 0, len = ref.length; i < len; i++) {
+          child = ref[i];
+          switch (child.className) {
+            case "variation before":
+              before = child;
+              break;
+            case "variation prev":
+              prev = child;
+              break;
+            case "variation current":
+              current = child;
+              break;
+            case "variation next":
+              next = child;
+              break;
+            case "variation after":
+              after = child;
           }
-        });
+        }
+        apply = function(v) {
+          var frac, t;
+          t = "translateX(" + v + "px)";
+          slider.css("transform", t);
+          slider.css("-webkit-transform", t);
+          frac = v / size;
+          before.style.opacity = frac * 0.2;
+          prev.style.opacity = frac * 0.8 + 0.2;
+          current.style.opacity = 1 - Math.abs(frac) * 0.8;
+          next.style.opacity = -frac * 0.8 + 0.2;
+          return after.style.opacity = -frac * 0.2;
+        };
+        update = function() {
+          var delta;
+          willUpdate = false;
+          delta = target - actual;
+          if (Math.abs(delta) > epsilon) {
+            actual += delta / 5;
+            apply(actual);
+            return requestUpdate();
+          } else {
+            actual = 0;
+            return apply(actual);
+          }
+        };
+        requestUpdate = function() {
+          if (!willUpdate) {
+            willUpdate = true;
+            return window.requestAnimationFrame(update);
+          }
+        };
+        handlers = {
+          start: function(p, e) {
+            start = p.x;
+            return size = slider[0].offsetHeight;
+          },
+          move: function(p) {
+            var x;
+            x = p.x - start;
+            return apply(x);
+          },
+          end: function(p) {
+            actual = p.x - start;
+            console.log(size);
+            if (Math.abs(actual) > size / 2) {
+              if (actual < 0) {
+                target = -size;
+              } else {
+                target = size;
+              }
+            } else {
+              target = 0;
+            }
+            return requestUpdate();
+          }
+        };
+        return $swipe.bind(slider, handlers, ["touch"]);
       }
     };
   });

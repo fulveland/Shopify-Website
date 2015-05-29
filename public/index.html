@@ -173,27 +173,29 @@
 </div>
 </script>
 <script type="text/ng-template" id="variation-container.html"><div class="sliding-container">
-	
-	<div class="variation before">
-		<img ng-src="{{getVariation($index, -2).hero}}">
-	</div>
+  <div class="slider">
+  
+    <div class="variation before">
+      <img ng-src="{{getVariation($index, -2).hero}}">
+    </div>
 
-	<div class="variation prev">
-		<img ng-src="{{getVariation($index, -1).hero}}">
-	</div>
+    <div class="variation prev">
+      <img ng-src="{{getVariation($index, -1).hero}}">
+    </div>
 
-	<div class="variation current">
-		<img ng-src="{{getVariation($index, 0).hero}}">
-	</div>
+    <div class="variation current">
+      <img ng-src="{{getVariation($index, 0).hero}}">
+    </div>
 
-	<div class="variation next">
-		<img ng-src="{{getVariation($index, 1).hero}}">
-	</div>
+    <div class="variation next">
+      <img ng-src="{{getVariation($index, 1).hero}}">
+    </div>
 
-	<div class="variation after">
-		<img ng-src="{{getVariation($index, 2).hero}}">
-	</div>
-
+    <div class="variation after">
+      <img ng-src="{{getVariation($index, 2).hero}}">
+    </div>
+    
+  </div>
 </div>
 </script>
 

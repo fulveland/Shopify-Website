@@ -8,10 +8,9 @@
     "public/styles.css"
   ],
   "devDependencies": {
-    "angular": "angular#1.3.x",
-    "angular-route": "angular-route#1.3.x",
-    "angular-touch": "angular-touch#1.3.x",
-    "hammerjs": "hammerjs#2.x",
+    "angular": "angular#1.4.x",
+    "angular-route": "angular-route#1.4.x",
+    "angular-touch": "angular-touch#1.4.x",
     "cd-reset": "cdig/cd-reset"
   },
   "private": true
