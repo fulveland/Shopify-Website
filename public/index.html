@@ -234,11 +234,12 @@
 </div>
 </script>
 <script type="text/ng-template" id="shop.html"><div class="product" ng-repeat="product in products">
-	
-	<variation-container set-showing="showing"></variation-container>
-	
-	<product-info ng-show="showing"></product-info>
-	
+  
+  <variation-container></variation-container>
+  
+  <!-- showing is not yet implemented -->
+  <product-info ng-show="showing"></product-info>
+  
 </div>
 </script>
 <script type="text/ng-template" id="wholesale.html"><h2>Wholesale</h2>

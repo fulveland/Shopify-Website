@@ -19,6 +19,7 @@ variation-container {
       width: 90vmin;
       min-width: 50vw;
       padding: 1vmin;
+      cursor: pointer;
       
       &.prev, &.next {
         opacity: 0.2;
@@ -30,7 +31,6 @@ variation-container {
       
       img {
         width: 100%;
-        cursor: pointer;
       }
     }
   }

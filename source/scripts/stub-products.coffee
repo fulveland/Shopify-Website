@@ -1,15 +1,15 @@
 angular.module "StubProducts", []
 
 .constant "StubProducts", StubProducts =
-	[
-		# RAW RING
+  [
+    # RAW RING
       {
          variations: [
             { hero:"assets/raw-ring.jpg" }
          ]
       }
       
-		# COFFEE AND CRYSTALS
+    # COFFEE AND CRYSTALS
       {
          variations: [
             { hero:"assets/coffee-and-crystals-howlite.jpg" }
@@ -23,8 +23,8 @@ angular.module "StubProducts", []
             { hero:"assets/coffee-and-crystals-goldstone.jpg" }
          ]
       }
-		
-		# FUZZY CUFF
+    
+    # FUZZY CUFF
       {
          variations: [
             { hero:"assets/fuzzy-cuff-1.jpg" }

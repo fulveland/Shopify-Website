@@ -3,13 +3,14 @@ angular.module "VariationContainer", []
 .directive "variationContainer", ($swipe)->
   templateUrl: "variation-container.html"
   link: (scope, element, attrs)->
+    productIndex = scope.$index
     actual = target = start = 0
-    epsilon = 0.5
+    epsilon = 1
+    direction = 0
     willUpdate = false
     slider = element.children().children()
     before = prev = current = next = after = null
     size = null
-    
     
     for child in slider.children()
       switch child.className
@@ -31,6 +32,15 @@ angular.module "VariationContainer", []
       next.style.opacity = -frac * 0.8 + 0.2
       after.style.opacity = -frac * 0.2
     
+    reset = ()->
+      actual = 0
+      requestAnimationFrame ()-> apply(actual)
+    
+    finish = ()->
+      scope.$apply ()->
+        if direction != 0
+          scope.changeVariation(productIndex, direction, reset)
+    
     update = ()->
       willUpdate = false
       delta = target - actual
@@ -39,8 +49,7 @@ angular.module "VariationContainer", []
         apply(actual)
         requestUpdate()
       else
-        actual = 0
-        apply(actual)
+        finish()
 
     requestUpdate = ()->
       unless willUpdate
@@ -51,7 +60,7 @@ angular.module "VariationContainer", []
       start: (p, e)->
         start = p.x
         size = slider[0].offsetHeight
-        # e.preventDefault()
+        e.preventDefault()
         
       move: (p)->
         x = p.x - start
@@ -59,15 +68,17 @@ angular.module "VariationContainer", []
         
       end: (p)->
         actual = p.x - start
-        console.log size
-        if Math.abs(actual) > size / 2
+        if Math.abs(actual) > size / 5
           if actual < 0
+            direction = -1
             target = -size
           else
+            direction = 1
             target = size
         else
+          direction = 0
           target = 0
         requestUpdate()
         
         
-    $swipe.bind slider, handlers, ["touch"]
+    $swipe.bind slider, handlers, ["mouse", "touch"]

@@ -17,9 +17,11 @@
     return {
       templateUrl: "variation-container.html",
       link: function(scope, element, attrs) {
-        var actual, after, apply, before, child, current, epsilon, handlers, i, len, next, prev, ref, requestUpdate, size, slider, start, target, update, willUpdate;
+        var actual, after, apply, before, child, current, direction, epsilon, finish, handlers, i, len, next, prev, productIndex, ref, requestUpdate, reset, size, slider, start, target, update, willUpdate;
+        productIndex = scope.$index;
         actual = target = start = 0;
-        epsilon = 0.5;
+        epsilon = 1;
+        direction = 0;
         willUpdate = false;
         slider = element.children().children();
         before = prev = current = next = after = null;
@@ -56,6 +58,19 @@
           next.style.opacity = -frac * 0.8 + 0.2;
           return after.style.opacity = -frac * 0.2;
         };
+        reset = function() {
+          actual = 0;
+          return requestAnimationFrame(function() {
+            return apply(actual);
+          });
+        };
+        finish = function() {
+          return scope.$apply(function() {
+            if (direction !== 0) {
+              return scope.changeVariation(productIndex, direction, reset);
+            }
+          });
+        };
         update = function() {
           var delta;
           willUpdate = false;
@@ -65,8 +80,7 @@
             apply(actual);
             return requestUpdate();
           } else {
-            actual = 0;
-            return apply(actual);
+            return finish();
           }
         };
         requestUpdate = function() {
@@ -78,7 +92,8 @@
         handlers = {
           start: function(p, e) {
             start = p.x;
-            return size = slider[0].offsetHeight;
+            size = slider[0].offsetHeight;
+            return e.preventDefault();
           },
           move: function(p) {
             var x;
@@ -87,20 +102,22 @@
           },
           end: function(p) {
             actual = p.x - start;
-            console.log(size);
-            if (Math.abs(actual) > size / 2) {
+            if (Math.abs(actual) > size / 5) {
               if (actual < 0) {
+                direction = -1;
                 target = -size;
               } else {
+                direction = 1;
                 target = size;
               }
             } else {
+              direction = 0;
               target = 0;
             }
             return requestUpdate();
           }
         };
-        return $swipe.bind(slider, handlers, ["touch"]);
+        return $swipe.bind(slider, handlers, ["mouse", "touch"]);
       }
     };
   });
@@ -290,9 +307,10 @@
   });
 
   angular.module("Shop", []).controller("ShopCtrl", function(Products, $scope) {
-    var currentVariations, product;
+    var product, resetCallback;
+    resetCallback = null;
     $scope.products = Products.all();
-    currentVariations = (function() {
+    $scope.currentVariations = (function() {
       var i, len, ref, results;
       ref = $scope.products;
       results = [];
@@ -302,11 +320,19 @@
       }
       return results;
     })();
+    $scope.changeVariation = function(productIndex, change, resetCb) {
+      resetCallback = resetCb;
+      return $scope.currentVariations[productIndex] -= change;
+    };
     return $scope.getVariation = function(productIndex, offset) {
       var nVariations, realIndex, variationIndex;
+      if (typeof resetCallback === "function") {
+        resetCallback();
+      }
+      resetCallback = null;
       product = $scope.products[productIndex];
       nVariations = product.variations.length;
-      variationIndex = currentVariations[productIndex] + offset;
+      variationIndex = $scope.currentVariations[productIndex] + offset;
       realIndex = (variationIndex + nVariations) % nVariations;
       return $scope.products[productIndex].variations[realIndex];
     };
