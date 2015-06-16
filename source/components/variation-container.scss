@@ -9,8 +9,8 @@ variation-container {
     position: absolute;
     top: 0.7vmin;
     left: 50%;
-    width: 90vmin * 5;
-    min-width: 50vw * 5;
+    width: 90vmin * 3;
+    min-width: 50vw * 3;
     transform: translateX(-50%);
     font-size: 0;
     
@@ -19,18 +19,22 @@ variation-container {
       width: 90vmin;
       min-width: 50vw;
       padding: 1vmin;
-      cursor: pointer;
       
-      &.prev, &.next {
+      &.A, &.C {
         opacity: 0.2;
       }
       
-      &.before, &.after {
-        opacity: 0;
+      img {
+        cursor: pointer;
+        width: 100%;
       }
       
-      img {
-        width: 100%;
+      &.next img {
+          cursor: e-resize;
+      }
+      
+      &.prev img {
+        cursor: w-resize;
       }
     }
   }

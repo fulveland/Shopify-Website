@@ -13,7 +13,6 @@
 # @codekit-append "scripts/pure-math.coffee"
 # @codekit-append "scripts/routes.coffee"
 # @codekit-append "scripts/scroll-animation.coffee"
-# @codekit-append "scripts/scroll-jack.coffee"
 # @codekit-append "scripts/stub-products.coffee"
 
 angular.module "FehuApp", [
@@ -38,6 +37,5 @@ angular.module "FehuApp", [
    "PureMath"
    "Routes"
    "ScrollAnimation"
-   "ScrollJack"
    "StubProducts"
 ]

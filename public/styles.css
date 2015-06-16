@@ -596,8 +596,8 @@ variation-container {
     position: absolute;
     top: 0.7vmin;
     left: 50%;
-    width: 450vmin;
-    min-width: 250vw;
+    width: 270vmin;
+    min-width: 150vw;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
     font-size: 0; }
@@ -605,14 +605,16 @@ variation-container {
       display: inline-block;
       width: 90vmin;
       min-width: 50vw;
-      padding: 1vmin;
-      cursor: pointer; }
-      variation-container .sliding-container .variation.prev, variation-container .sliding-container .variation.next {
+      padding: 1vmin; }
+      variation-container .sliding-container .variation.A, variation-container .sliding-container .variation.C {
         opacity: 0.2; }
-      variation-container .sliding-container .variation.before, variation-container .sliding-container .variation.after {
-        opacity: 0; }
       variation-container .sliding-container .variation img {
+        cursor: pointer;
         width: 100%; }
+      variation-container .sliding-container .variation.next img {
+        cursor: e-resize; }
+      variation-container .sliding-container .variation.prev img {
+        cursor: w-resize; }
 
 #shop ng-view {
   max-width: none;
