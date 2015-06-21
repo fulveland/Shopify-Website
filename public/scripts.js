@@ -16,18 +16,52 @@
   angular.module("VariationContainer", []).directive("variationContainer", function($swipe, $timeout, Ease, ScrollAnimation) {
     return {
       templateUrl: "variation-container.html",
-      link: function(scope, element, attrs) {
-        var A, B, C, apply, applyOpacity, applyTranslate, child, dragStart, enableTransition, handlers, i, len, productIndex, ref, size, slider, updateOffsets, updateSize;
-        productIndex = scope.$index;
-        slider = element.children().children();
-        A = B = C = null;
-        size = null;
+      controller: function($scope, $element) {
+        return $scope.showProductInfo = function(enable) {
+          var rectBefore, scrollTopBefore;
+          if (enable == null) {
+            enable = true;
+          }
+          if ($scope.showingProductInfo = enable) {
+            rectBefore = $element[0].getBoundingClientRect();
+            scrollTopBefore = document.body.scrollTop;
+            return $timeout(function() {
+              var endScroll, rectAfter, startScroll;
+              rectAfter = $element[0].getBoundingClientRect();
+              startScroll = document.body.scrollTop - (rectBefore.bottom - rectAfter.bottom);
+              endScroll = rectAfter.bottom + document.body.scrollTop - rectAfter.height / 4;
+              return ScrollAnimation.animate(startScroll, endScroll);
+            });
+          } else {
+            rectBefore = $element[0].getBoundingClientRect();
+            scrollTopBefore = document.body.scrollTop;
+            return $timeout(function() {
+              var endScroll, rectAfter, startScroll;
+              rectAfter = $element[0].getBoundingClientRect();
+              startScroll = document.body.scrollTop - (rectBefore.bottom - rectAfter.bottom);
+              endScroll = rectAfter.top + document.body.scrollTop;
+              if (endScroll < document.body.scrollTop) {
+                return ScrollAnimation.animate(startScroll, endScroll);
+              }
+            });
+          }
+        };
+      },
+      link: function(scope, element) {
+        var A, B, C, adjustOffsets, animString, animationTime, applyOpacity, applyTranslate, child, clip, dragStart, enableTransition, handlers, i, len, nVariations, productIndex, ref, resetSliderPosition, setSlider, setSliderPosition, setVariation, slider, sliderNG;
+        animationTime = 400;
+        animString = " " + animationTime + "ms cubic-bezier(.16,.56,.5,1)";
         dragStart = 0;
+        scope.offset = 0;
         scope.offsetA = 0;
         scope.offsetB = 0;
         scope.offsetC = 0;
-        scope.offset = 0;
-        ref = slider.children();
+        productIndex = scope.$index;
+        nVariations = scope.variationsCount(productIndex);
+        sliderNG = element.children().children();
+        slider = sliderNG[0];
+        A = B = C = null;
+        ref = slider.children;
         for (i = 0, len = ref.length; i < len; i++) {
           child = ref[i];
           switch (child.className) {
@@ -41,33 +75,44 @@
               C = child;
           }
         }
-        updateOffsets = function(delta) {
-          scope.offset += delta;
+        setVariation = function(variation, prop, value) {
+          variation.style["-webkit-" + prop] = value;
+          variation.style["-ms-" + prop] = value;
+          return variation.style[prop] = value;
+        };
+        setSlider = function(prop, value, addPrefixToValue) {
+          if (addPrefixToValue == null) {
+            addPrefixToValue = false;
+          }
+          slider.style["-webkit-" + prop] = (addPrefixToValue ? "-webkit-" + value : value);
+          slider.style["-ms-" + prop] = (addPrefixToValue ? "-ms-" + value : value);
+          return slider.style[prop] = value;
+        };
+        clip = function(v, min, max) {
+          return Math.min(Math.max(v, min), max);
+        };
+        adjustOffsets = function(delta) {
+          scope.offset = clip(scope.offset + delta, -nVariations + 1, 0);
           scope.offsetA = Math.floor((-scope.offset + 2) / 3) * 3;
           scope.offsetB = Math.floor((-scope.offset + 1) / 3) * 3;
           scope.offsetC = Math.floor((-scope.offset + 0) / 3) * 3;
           return scope.changeVariation(productIndex, scope.offset);
         };
-        updateSize = function() {
-          return size = slider[0].offsetHeight;
-        };
         enableTransition = function(enable) {
-          A.style.transition = (enable ? "opacity .5s cubic-bezier(.16,.56,.5,1)" : null);
-          B.style.transition = (enable ? "opacity .5s cubic-bezier(.16,.56,.5,1)" : null);
-          C.style.transition = (enable ? "opacity .5s cubic-bezier(.16,.56,.5,1)" : null);
-          slider.css("-webkit-transition", (enable ? "-webkit-transform .5s cubic-bezier(.16,.56,.5,1)" : null));
-          slider.css("-moz-transition", (enable ? "-moz-transform .5s cubic-bezier(.16,.56,.5,1)" : null));
-          slider.css("-ms-transition", (enable ? "-ms-transform .5s cubic-bezier(.16,.56,.5,1)" : null));
-          return slider.css("transition", (enable ? "transform .5s cubic-bezier(.16,.56,.5,1)" : null));
+          if (enable == null) {
+            enable = true;
+          }
+          setSlider("transition", (enable ? "transform" + animString : null), true);
+          A.style.transition = (enable ? "opacity" + animString : null);
+          B.style.transition = (enable ? "opacity" + animString : null);
+          return C.style.transition = (enable ? "opacity" + animString : null);
         };
         applyTranslate = function(x) {
-          x += scope.offset * size;
-          slider.css("transform", "translateX(" + x + "px)");
-          slider.css("-ms-transform", "translateX(" + x + "px)");
-          slider.css("-webkit-transform", "translateX(" + x + "px)");
-          A.style["-webkit-transform"] = "translateX(" + (scope.offsetA * size) + "px)";
-          B.style["-webkit-transform"] = "translateX(" + (scope.offsetB * size) + "px)";
-          return C.style["-webkit-transform"] = "translateX(" + (scope.offsetC * size) + "px)";
+          x += scope.offset * slider.offsetHeight;
+          setSlider("transform", "translateX(" + x + "px)");
+          setVariation(A, "transform", "translateX(" + (scope.offsetA * slider.offsetHeight) + "px)");
+          setVariation(B, "transform", "translateX(" + (scope.offsetB * slider.offsetHeight) + "px)");
+          return setVariation(C, "transform", "translateX(" + (scope.offsetC * slider.offsetHeight) + "px)");
         };
         applyOpacity = function(v) {
           v += scope.offset;
@@ -75,57 +120,50 @@
           B.style.opacity = 1 - Math.abs((v + scope.offsetB) / 1.25);
           return C.style.opacity = 1 - Math.abs((v + scope.offsetC + 1) / 1.25);
         };
-        apply = function(x) {
+        setSliderPosition = function(x) {
           applyTranslate(x);
-          return applyOpacity(x / size);
+          return applyOpacity(x / slider.offsetHeight);
+        };
+        resetSliderPosition = function() {
+          return setSliderPosition(0);
         };
         handlers = {
           start: function(pos, event) {
             dragStart = pos.x;
-            updateSize();
             return enableTransition(false);
           },
           move: function(pos) {
             var x;
             x = pos.x - dragStart;
-            return apply(x);
+            return setSliderPosition(x);
           },
           end: function(pos) {
             var x;
             x = pos.x - dragStart;
             enableTransition(true);
-            if (Math.abs(x) > size / 5) {
-              if (x < 0) {
-                updateOffsets(-1);
-              } else {
-                updateOffsets(1);
-              }
+            if (x > slider.offsetHeight / 5) {
+              adjustOffsets(1);
+            }
+            if (x < -slider.offsetHeight / 5) {
+              adjustOffsets(-1);
             }
             return scope.$apply(function() {
-              return apply(0);
+              return resetSliderPosition();
             });
           }
         };
-        $swipe.bind(slider, handlers, ["touch"]);
+        $swipe.bind(sliderNG, handlers, ["touch"]);
         scope.clickAction = function(shift) {
-          var endScroll, rect;
           if (shift > 0) {
-            updateSize();
-            enableTransition(true);
-            updateOffsets(-1);
-            return apply(0);
+            enableTransition();
+            adjustOffsets(-1);
+            return resetSliderPosition();
           } else if (shift < 0) {
-            updateSize();
-            enableTransition(true);
-            updateOffsets(1);
-            return apply(0);
+            enableTransition();
+            adjustOffsets(1);
+            return resetSliderPosition();
           } else {
-            scope.showProductInfo = !scope.showProductInfo;
-            if (scope.showProductInfo) {
-              rect = element[0].getBoundingClientRect();
-              endScroll = rect.bottom + document.body.scrollTop - rect.height / 4;
-              return ScrollAnimation.animate(endScroll);
-            }
+            return scope.toggleProductInfo(productIndex, scope);
           }
         };
         return scope.getClass = function(shift) {
@@ -326,7 +364,7 @@
   });
 
   angular.module("Shop", []).controller("ShopCtrl", function(Products, $scope) {
-    var product;
+    var product, showingProduct;
     $scope.showProductInfo = false;
     $scope.products = Products.all();
     $scope.currentVariations = (function() {
@@ -339,15 +377,35 @@
       }
       return results;
     })();
+    $scope.variationsCount = function(productIndex) {
+      return $scope.products[productIndex].variations.length;
+    };
     $scope.changeVariation = function(productIndex, change) {
       return $scope.currentVariations[productIndex] += change;
     };
-    return $scope.getVariation = function(productIndex, variationIndex) {
-      var nVariations, realIndex;
-      product = $scope.products[productIndex];
-      nVariations = product.variations.length;
-      realIndex = (variationIndex + nVariations) % nVariations;
-      return $scope.products[productIndex].variations[realIndex];
+    $scope.getVariation = function(productIndex, variationIndex) {
+      return $scope.products[productIndex].variations[variationIndex] || {};
+    };
+    $scope.hasVariation = function(productIndex, variationIndex) {
+      return $scope.products[productIndex].variations[variationIndex] != null;
+    };
+    showingProduct = {
+      index: null,
+      scope: null
+    };
+    return $scope.toggleProductInfo = function(productIndex, productScope) {
+      var ref;
+      if ((ref = showingProduct.scope) != null) {
+        ref.showProductInfo(false);
+      }
+      if (showingProduct.index === productIndex) {
+        showingProduct.index = null;
+        return showingProduct.scope = null;
+      } else {
+        showingProduct.index = productIndex;
+        showingProduct.scope = productScope;
+        return productScope.showProductInfo();
+      }
     };
   });
 
@@ -575,9 +633,9 @@
       register: function(a) {
         return animateFn = a;
       },
-      animate: function(endScroll) {
+      animate: function(startScroll, endScroll) {
         if (animateFn != null) {
-          return animateFn(endScroll);
+          return animateFn(startScroll, endScroll);
         }
       }
     };
@@ -602,8 +660,8 @@
           endTime = startTime + duration;
           return tick(currentTime);
         };
-        animateFn = function(eS) {
-          startScroll = subject.scrollTop;
+        animateFn = function(sS, eS) {
+          startScroll = sS;
           endScroll = eS;
           if (Math.abs(startScroll - endScroll) > THRESHOLD) {
             return requestAnimationFrame(firstTick);
@@ -629,18 +687,6 @@
           hero: "assets/coffee-and-crystals-pyrite.jpg"
         }, {
           hero: "assets/coffee-and-crystals-green-turquoise.jpg"
-        }, {
-          hero: "assets/coffee-and-crystals-light-turquoise.jpg"
-        }, {
-          hero: "assets/coffee-and-crystals-malachite.jpg"
-        }, {
-          hero: "assets/coffee-and-crystals-lapis.jpg"
-        }, {
-          hero: "assets/coffee-and-crystals-jasper.jpg"
-        }, {
-          hero: "assets/coffee-and-crystals-smokey-quartz.jpg"
-        }, {
-          hero: "assets/coffee-and-crystals-goldstone.jpg"
         }
       ]
     }, {

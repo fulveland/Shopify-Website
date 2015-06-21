@@ -2,106 +2,147 @@ angular.module "VariationContainer", []
 
 .directive "variationContainer", ($swipe, $timeout, Ease, ScrollAnimation)->
   templateUrl: "variation-container.html"
-  link: (scope, element, attrs)->
-    productIndex = scope.$index
-    slider = element.children().children()
-    A = B = C = null
-    size = null
+
+  controller: ($scope, $element)->
+    $scope.showProductInfo = (enable = true)->
+      if $scope.showingProductInfo = enable
+        rectBefore = $element[0].getBoundingClientRect()
+        scrollTopBefore = document.body.scrollTop
+        $timeout ()->
+          rectAfter = $element[0].getBoundingClientRect()
+          startScroll = document.body.scrollTop - (rectBefore.bottom - rectAfter.bottom)
+          endScroll = rectAfter.bottom + document.body.scrollTop - rectAfter.height / 4
+          ScrollAnimation.animate startScroll, endScroll
+      else
+        rectBefore = $element[0].getBoundingClientRect()
+        scrollTopBefore = document.body.scrollTop
+        $timeout ()->
+          rectAfter = $element[0].getBoundingClientRect()
+          startScroll = document.body.scrollTop - (rectBefore.bottom - rectAfter.bottom)
+          endScroll = rectAfter.top + document.body.scrollTop
+          if endScroll < document.body.scrollTop
+            ScrollAnimation.animate startScroll, endScroll
+
+  
+  link: (scope, element)->
+    
+    ## CONFIG
+    animationTime = 400
+    animString = " #{animationTime}ms cubic-bezier(.16,.56,.5,1)" # Must begin with a space
+    
+    
+    ## STATE
     dragStart = 0
+    # The offset values describe how many images we've shifted left (-) or right (+)
+    scope.offset = 0
     scope.offsetA = 0
     scope.offsetB = 0
     scope.offsetC = 0
-    scope.offset = 0
     
-    for child in slider.children()
+    
+    ## REFERENCES
+    productIndex = scope.$index
+    nVariations = scope.variationsCount(productIndex)
+    
+    sliderNG = element.children().children()
+    slider = sliderNG[0]
+    
+    A = B = C = null
+    for child in slider.children
       switch child.className
         when "variation A" then A = child
         when "variation B" then B = child
         when "variation C" then C = child
     
-    updateOffsets = (delta)->
-      scope.offset += delta
+    
+    ## HELPERS
+    
+    setVariation = (variation, prop, value)->
+      variation.style["-webkit-"+prop] = value
+      variation.style["-ms-"+prop] = value
+      variation.style[prop] = value
+    
+    setSlider = (prop, value, addPrefixToValue = false)->
+      slider.style["-webkit-"+prop] = (if addPrefixToValue then "-webkit-"+value else value)
+      slider.style["-ms-"+prop] = (if addPrefixToValue then "-ms-"+value else value)
+      slider.style[prop] = value
+    
+    clip = (v, min, max)->
+      Math.min(Math.max(v, min), max)
+    
+    
+    ## LOGIC
+    
+    adjustOffsets = (delta)->
+      scope.offset = clip scope.offset + delta, -nVariations+1, 0
       scope.offsetA = Math.floor((-scope.offset+2)/3)*3
       scope.offsetB = Math.floor((-scope.offset+1)/3)*3
       scope.offsetC = Math.floor((-scope.offset+0)/3)*3
       scope.changeVariation(productIndex, scope.offset)
-      
-    updateSize = ()->
-      size = slider[0].offsetHeight
     
-    enableTransition = (enable)->
-      A.style.transition = (if enable then "opacity .5s cubic-bezier(.16,.56,.5,1)" else null)
-      B.style.transition = (if enable then "opacity .5s cubic-bezier(.16,.56,.5,1)" else null)
-      C.style.transition = (if enable then "opacity .5s cubic-bezier(.16,.56,.5,1)" else null)
-      
-      slider.css "-webkit-transition", (if enable then "-webkit-transform .5s cubic-bezier(.16,.56,.5,1)" else null)
-      slider.css "-moz-transition", (if enable then "-moz-transform .5s cubic-bezier(.16,.56,.5,1)" else null)
-      slider.css "-ms-transition", (if enable then "-ms-transform .5s cubic-bezier(.16,.56,.5,1)" else null)
-      slider.css "transition", (if enable then "transform .5s cubic-bezier(.16,.56,.5,1)" else null)
+    enableTransition = (enable = true)->
+      setSlider "transition", (if enable then "transform" + animString else null), true
+      A.style.transition = (if enable then "opacity" + animString else null)
+      B.style.transition = (if enable then "opacity" + animString else null)
+      C.style.transition = (if enable then "opacity" + animString else null)
     
     applyTranslate = (x)->
-      x += scope.offset * size
-      slider.css "transform", "translateX(#{x}px)"
-      slider.css "-ms-transform", "translateX(#{x}px)"
-      slider.css "-webkit-transform", "translateX(#{x}px)"
-      A.style["-webkit-transform"] = "translateX(#{scope.offsetA * size}px)"
-      B.style["-webkit-transform"] = "translateX(#{scope.offsetB * size}px)"
-      C.style["-webkit-transform"] = "translateX(#{scope.offsetC * size}px)"
+      x += scope.offset * slider.offsetHeight
+      setSlider "transform", "translateX(#{x}px)"
+      setVariation A, "transform", "translateX(#{scope.offsetA * slider.offsetHeight}px)"
+      setVariation B, "transform", "translateX(#{scope.offsetB * slider.offsetHeight}px)"
+      setVariation C, "transform", "translateX(#{scope.offsetC * slider.offsetHeight}px)"
     
     applyOpacity = (v)->
       v += scope.offset
       A.style.opacity = 1 - Math.abs (v + scope.offsetA - 1) / 1.25
-      B.style.opacity = 1 - Math.abs (v + scope.offsetB) / 1.25
+      B.style.opacity = 1 - Math.abs (v + scope.offsetB)     / 1.25
       C.style.opacity = 1 - Math.abs (v + scope.offsetC + 1) / 1.25
     
-    apply = (x)->
-      applyTranslate(x)
-      applyOpacity(x/size)
+    setSliderPosition = (x)->
+      applyTranslate x
+      applyOpacity x / slider.offsetHeight
+    
+    resetSliderPosition = ()->
+      setSliderPosition(0)
+    
+    ## SWIPE HANDLERS
     
     handlers =
       start: (pos, event)->
         dragStart = pos.x
-        updateSize()
-        enableTransition(false)
-        # event.preventDefault() # Turn on for debugging
+        enableTransition false
         
       move: (pos)->
         x = pos.x - dragStart
-        apply(x)
+        setSliderPosition x
         
       end: (pos)->
         x = pos.x - dragStart
-        
-        enableTransition(true)
-        
-        if Math.abs(x) > size / 5
-          if x < 0
-            updateOffsets(-1)
-          else
-            updateOffsets(1)
-        scope.$apply ()->
-          apply(0)
+        enableTransition true
+        if x >  slider.offsetHeight / 5 then adjustOffsets 1
+        if x < -slider.offsetHeight / 5 then adjustOffsets -1
+        scope.$apply ()-> resetSliderPosition()
     
-    $swipe.bind slider, handlers, ["touch"]
+    
+    ## SWIPE SETUP
+    
+    $swipe.bind sliderNG, handlers, ["touch"]
+    
+    
+    ## SCOPE FUNCTIONS
     
     scope.clickAction = (shift)->
       if shift > 0
-        updateSize()
-        enableTransition(true)
-        updateOffsets(-1)
-        apply(0)
+        enableTransition()
+        adjustOffsets -1
+        resetSliderPosition()
       else if shift < 0
-        updateSize()
-        enableTransition(true)
-        updateOffsets(1)
-        apply(0)
+        enableTransition()
+        adjustOffsets 1
+        resetSliderPosition()
       else
-        scope.showProductInfo = !scope.showProductInfo
-        if scope.showProductInfo
-          rect = element[0].getBoundingClientRect()
-          endScroll = rect.bottom + document.body.scrollTop - rect.height / 4
-          ScrollAnimation.animate(endScroll)
-
+        scope.toggleProductInfo(productIndex, scope)
     
     scope.getClass = (shift)->
       if shift > 0

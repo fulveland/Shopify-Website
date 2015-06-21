@@ -15,12 +15,12 @@ angular.module "StubProducts", []
             { hero:"assets/coffee-and-crystals-howlite.jpg" }
             { hero:"assets/coffee-and-crystals-pyrite.jpg" }
             { hero:"assets/coffee-and-crystals-green-turquoise.jpg" }
-            { hero:"assets/coffee-and-crystals-light-turquoise.jpg" }
-            { hero:"assets/coffee-and-crystals-malachite.jpg" }
-            { hero:"assets/coffee-and-crystals-lapis.jpg" }
-            { hero:"assets/coffee-and-crystals-jasper.jpg" }
-            { hero:"assets/coffee-and-crystals-smokey-quartz.jpg" }
-            { hero:"assets/coffee-and-crystals-goldstone.jpg" }
+            # { hero:"assets/coffee-and-crystals-light-turquoise.jpg" }
+            # { hero:"assets/coffee-and-crystals-malachite.jpg" }
+            # { hero:"assets/coffee-and-crystals-lapis.jpg" }
+            # { hero:"assets/coffee-and-crystals-jasper.jpg" }
+            # { hero:"assets/coffee-and-crystals-smokey-quartz.jpg" }
+            # { hero:"assets/coffee-and-crystals-goldstone.jpg" }
          ]
       }
     
