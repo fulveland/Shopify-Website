@@ -1,85 +1,112 @@
+.showingProductInfo {
+  product-info {
+    opacity: 1;
+    transform: none;
+    margin-bottom: 4em;
+  }
+}
+
 product-info {
-	display: block;
-	// max-width: 88vmin; // Disabled because it causes weirdness when window is wide and short
-	margin: 0 auto;
-	padding: 1em;
-	background: white;
-	
-	item-info {
-		display: block;
-		max-width: $unit * 16;
-		margin: 4em auto;
-		
-		.name {
-			display: flex;
-			justify-content: space-between;
-			align-items: baseline;
-			
-			h1 {
-				font-size: 4em;
-				margin: 0 0 .2em;
-			}
-		}
-		
-		descriptive-info {
-			font-size: 1.2em;
-			display: flex;
-			margin: 2em 0 0;
-			
-			.character {
-				font-style: italic;
-				margin-right: 3em;
-			}
-		}
+  display: block;
+  position: relative;
+  width: 88.4vmin;
+  min-width: 60vw;
+  margin: -16em auto -2.4em;
+  padding: 2vmin;
+  border: 1px solid rgba(black, .1);
+  background: rgba(white,.9);
+  box-shadow: black;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s, transform 1s, margin 1s;
+  
+  identity-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    
+    h1 {
+      font-size: 4em;
+      margin: 0 0 .2em;
+    }
+  }
+  
+  descriptive-info {
+    display: flex;
+    font-size: 1.2em;
+    
+    .character {
+      font-style: italic;
+      margin-right: 3em;
+    }
+  }
+  
+  purchasing-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    max-width: $unit * 12;
+    margin: 1em auto 0;
+    font-size: 1.4em;
+    
+    select {
+      border: 1px solid $black;
+      background: transparent;
+      padding: 0 .4em .1em;
+    }
+    
+    .add-to-cart {
+      border-bottom: 1px solid $black;
+    }
+  }
+    
+  stub-info {
+    display: block;
+    text-align: center;
+    margin: .5em 0 0;
+    
+    div {
+      display: inline-block;
+    }
+    h3 {
+      padding: .3rem;
+      display: inline-block;
+    }
+  }
+  
+  line-info, shop-info {
+    display: block;
+    display: none;
+    max-width: $unit * 12;
+    margin: 0 auto;
+    
+    h3 {
+      margin: 1em 0 0;
+    }
+    
+    h2 {
+      margin: 1.6em 0 0;
+    }
+    
+    .tut {
+      width: $unit * 2.25;
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 $unit/2 0 0;
+      
+      img{
+        width: 100%;
+      }
+      
+      p{
+        text-align: center;
+      }
+    }
+  }
 
-		key-info {
-			display: flex;
-			justify-content: space-between;
-			align-items: baseline;
-			max-width: $unit * 12;
-			font-size: 1.4em;
-			margin: 3em auto 0;
-			
-			.add-to-cart {
-				border-bottom: 1px solid $black;
-				padding-bottom: .3em;
-			}
-		}
-	}
-
-
-	line-info, shop-info {
-		display: block;
-		max-width: $unit * 12;
-		margin: 0 auto;
-		
-		h3 {
-			margin: 1em 0 0;
-		}
-		
-		h2 {
-			margin: 1.6em 0 0;
-		}
-		
-		.tut {
-			width: $unit * 2.25;
-			display: inline-block;
-			vertical-align: top;
-			margin: 0 $unit/2 0 0;
-			
-			img{
-				width: 100%;
-			}
-			
-			p{
-				text-align: center;
-			}
-		}
-	}
-
-	shop-info {
-		display: block;
-		padding-bottom: 100px;
-	}
+  shop-info {
+    padding-bottom: 100px;
+  }
 
 }

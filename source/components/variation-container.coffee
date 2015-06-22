@@ -5,7 +5,10 @@ angular.module "VariationContainer", []
 
   controller: ($scope, $element)->
     $scope.showProductInfo = (enable = true)->
-      if $scope.showingProductInfo = enable
+      
+      return # DISABLED
+      
+      if enable
         rectBefore = $element[0].getBoundingClientRect()
         scrollTopBefore = document.body.scrollTop
         $timeout ()->
@@ -29,7 +32,8 @@ angular.module "VariationContainer", []
     ## CONFIG
     animationTime = 400
     animString = " #{animationTime}ms cubic-bezier(.16,.56,.5,1)" # Must begin with a space
-    
+    wrapping = true
+        
     
     ## STATE
     dragStart = 0
@@ -74,7 +78,9 @@ angular.module "VariationContainer", []
     ## LOGIC
     
     adjustOffsets = (delta)->
-      scope.offset = clip scope.offset + delta, -nVariations+1, 0
+      scope.offset += delta
+      if not wrapping
+        scope.offset = clip scope.offset, -nVariations+1, 0
       scope.offsetA = Math.floor((-scope.offset+2)/3)*3
       scope.offsetB = Math.floor((-scope.offset+1)/3)*3
       scope.offsetC = Math.floor((-scope.offset+0)/3)*3

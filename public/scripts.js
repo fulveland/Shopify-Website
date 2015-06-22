@@ -22,7 +22,8 @@
           if (enable == null) {
             enable = true;
           }
-          if ($scope.showingProductInfo = enable) {
+          return;
+          if (enable) {
             rectBefore = $element[0].getBoundingClientRect();
             scrollTopBefore = document.body.scrollTop;
             return $timeout(function() {
@@ -48,9 +49,10 @@
         };
       },
       link: function(scope, element) {
-        var A, B, C, adjustOffsets, animString, animationTime, applyOpacity, applyTranslate, child, clip, dragStart, enableTransition, handlers, i, len, nVariations, productIndex, ref, resetSliderPosition, setSlider, setSliderPosition, setVariation, slider, sliderNG;
+        var A, B, C, adjustOffsets, animString, animationTime, applyOpacity, applyTranslate, child, clip, dragStart, enableTransition, handlers, i, len, nVariations, productIndex, ref, resetSliderPosition, setSlider, setSliderPosition, setVariation, slider, sliderNG, wrapping;
         animationTime = 400;
         animString = " " + animationTime + "ms cubic-bezier(.16,.56,.5,1)";
+        wrapping = true;
         dragStart = 0;
         scope.offset = 0;
         scope.offsetA = 0;
@@ -92,7 +94,10 @@
           return Math.min(Math.max(v, min), max);
         };
         adjustOffsets = function(delta) {
-          scope.offset = clip(scope.offset + delta, -nVariations + 1, 0);
+          scope.offset += delta;
+          if (!wrapping) {
+            scope.offset = clip(scope.offset, -nVariations + 1, 0);
+          }
           scope.offsetA = Math.floor((-scope.offset + 2) / 3) * 3;
           scope.offsetB = Math.floor((-scope.offset + 1) / 3) * 3;
           scope.offsetC = Math.floor((-scope.offset + 0) / 3) * 3;
@@ -384,19 +389,26 @@
       return $scope.currentVariations[productIndex] += change;
     };
     $scope.getVariation = function(productIndex, variationIndex) {
-      return $scope.products[productIndex].variations[variationIndex] || {};
+      var variations;
+      variations = $scope.products[productIndex].variations;
+      return variations[(variationIndex + variations.length) % variations.length] || {};
     };
     $scope.hasVariation = function(productIndex, variationIndex) {
-      return $scope.products[productIndex].variations[variationIndex] != null;
+      var variations;
+      variations = $scope.products[productIndex].variations;
+      return variations[(variationIndex + variations.length) % variations.length] != null;
     };
     showingProduct = {
       index: null,
       scope: null
     };
-    return $scope.toggleProductInfo = function(productIndex, productScope) {
-      var ref;
+    $scope.toggleProductInfo = function(productIndex, productScope) {
+      var ref, ref1, ref2;
       if ((ref = showingProduct.scope) != null) {
         ref.showProductInfo(false);
+      }
+      if ((ref1 = showingProduct.scope) != null) {
+        ref1.showingProductInfo = false;
       }
       if (showingProduct.index === productIndex) {
         showingProduct.index = null;
@@ -404,7 +416,20 @@
       } else {
         showingProduct.index = productIndex;
         showingProduct.scope = productScope;
+        if ((ref2 = showingProduct.scope) != null) {
+          ref2.showingProductInfo = true;
+        }
         return productScope.showProductInfo();
+      }
+    };
+    return $scope.getStyle = function(productIndex) {
+      var style, ypos;
+      if (showingProduct.index === productIndex) {
+        console.log(ypos = $scope.products[productIndex].ypos);
+        return style = {
+          transform: "translateY(-" + ypos + "%)",
+          "-webkit-transform": "translateY(-" + ypos + "%)"
+        };
       }
     };
   });
@@ -674,12 +699,14 @@
 
   angular.module("StubProducts", []).constant("StubProducts", StubProducts = [
     {
+      ypos: 28,
       variations: [
         {
           hero: "assets/raw-ring.jpg"
         }
       ]
     }, {
+      ypos: 25,
       variations: [
         {
           hero: "assets/coffee-and-crystals-howlite.jpg"
@@ -690,6 +717,7 @@
         }
       ]
     }, {
+      ypos: 39,
       variations: [
         {
           hero: "assets/fuzzy-cuff-1.jpg"

@@ -1,3 +1,9 @@
+.showingProductInfo {
+  the-slider {
+    
+  }
+}
+
 variation-container {
   display: block;
   position: relative;
@@ -5,14 +11,22 @@ variation-container {
   min-height: 50vw;
   overflow: hidden;
   
-  .sliding-container {
+  sliding-container {
+    display: block;
     position: absolute;
-    top: 0.7vmin;
+    top: 0;
     left: 50%;
     width: 90vmin * 3;
     min-width: 50vw * 3;
+    margin-top: 1.4vmin;
     transform: translateX(-50%);
     font-size: 0;
+    overflow: hidden;
+    
+    the-slider {
+      display: block;
+      transition: transform 1s;
+    }
     
     .variation {
       display: inline-block;

@@ -14,10 +14,12 @@ angular.module "Shop", []
     $scope.currentVariations[productIndex] += change
   
   $scope.getVariation = (productIndex, variationIndex)->
-    return $scope.products[productIndex].variations[variationIndex] or {}
+    variations = $scope.products[productIndex].variations
+    return variations[(variationIndex + variations.length) % variations.length] or {}
   
   $scope.hasVariation = (productIndex, variationIndex)->
-    return $scope.products[productIndex].variations[variationIndex]?
+    variations = $scope.products[productIndex].variations
+    return variations[(variationIndex + variations.length) % variations.length]?
   
   showingProduct =
     index: null
@@ -25,6 +27,7 @@ angular.module "Shop", []
   
   $scope.toggleProductInfo = (productIndex, productScope)->
     showingProduct.scope?.showProductInfo(false)
+    showingProduct.scope?.showingProductInfo = false
     
     if showingProduct.index is productIndex
       showingProduct.index = null
@@ -32,5 +35,12 @@ angular.module "Shop", []
     else
       showingProduct.index = productIndex
       showingProduct.scope = productScope
+      showingProduct.scope?.showingProductInfo = true
       productScope.showProductInfo()
       
+  $scope.getStyle = (productIndex)->
+    if showingProduct.index is productIndex
+      console.log ypos = $scope.products[productIndex].ypos
+      return style =
+        transform: "translateY(-#{ypos}%)"
+        "-webkit-transform": "translateY(-#{ypos}%)"
