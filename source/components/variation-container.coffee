@@ -3,6 +3,16 @@ angular.module "VariationContainer", []
 .directive "variationContainer", ($swipe, $timeout, ScrollAnimation)->
   templateUrl: "variation-container.html"
   
+  controller: ($scope)->
+
+    $scope.getStyle = (productIndex)->
+      if $scope.infoIsOpen(productIndex)
+        ypos = $scope.products[productIndex].ypos
+        return style =
+          transform: "translateY(-#{ypos}%)"
+          "-webkit-transform": "translateY(-#{ypos}%)"
+
+  
   link: (scope, element)->
     
     ## CONFIG

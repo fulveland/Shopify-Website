@@ -1,13 +1,11 @@
-.showingProductInfo {
-  product-info {
-    opacity: 1;
-    transform: none;
-    margin-bottom: 4em;
-  }
+product-info.showingProductInfo {
+  opacity: 1;
+  transform: none;
+  margin-bottom: 4em;
 }
 
 product-info {
-  display: block;
+  display: none;
   position: relative;
   width: 88.4vmin;
   min-width: 60vw;

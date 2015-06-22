@@ -40,15 +40,8 @@
             return (ref1 = showingProduct.scope) != null ? ref1.showingProductInfo = true : void 0;
           }
         };
-        return $scope.getStyle = function(productIndex) {
-          var style, ypos;
-          if (showingProduct.index === productIndex) {
-            ypos = $scope.products[productIndex].ypos;
-            return style = {
-              transform: "translateY(-" + ypos + "%)",
-              "-webkit-transform": "translateY(-" + ypos + "%)"
-            };
-          }
+        return $scope.infoIsOpen = function(productIndex) {
+          return showingProduct.index === productIndex;
         };
       }
     };
@@ -64,6 +57,18 @@
   angular.module("VariationContainer", []).directive("variationContainer", function($swipe, $timeout, ScrollAnimation) {
     return {
       templateUrl: "variation-container.html",
+      controller: function($scope) {
+        return $scope.getStyle = function(productIndex) {
+          var style, ypos;
+          if ($scope.infoIsOpen(productIndex)) {
+            ypos = $scope.products[productIndex].ypos;
+            return style = {
+              transform: "translateY(-" + ypos + "%)",
+              "-webkit-transform": "translateY(-" + ypos + "%)"
+            };
+          }
+        };
+      },
       link: function(scope, element) {
         var A, B, C, adjustOffsets, animString, animationTime, applyOpacity, applyTranslate, child, clip, dragStart, enableTransition, handlers, i, len, nVariations, productIndex, ref, resetSliderPosition, setSlider, setSliderPosition, setVariation, slider, sliderNG, wrapping;
         animationTime = 400;

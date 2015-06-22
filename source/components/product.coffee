@@ -2,6 +2,7 @@ angular.module "Product", []
 
 .directive "product", ()->
   templateUrl: "product.html"
+  
   controller: ($scope)->
     showingProduct =
       index: null
@@ -28,10 +29,6 @@ angular.module "Product", []
         showingProduct.index = productIndex
         showingProduct.scope = productScope
         showingProduct.scope?.showingProductInfo = true
-        
-    $scope.getStyle = (productIndex)->
-      if showingProduct.index is productIndex
-        ypos = $scope.products[productIndex].ypos
-        return style =
-          transform: "translateY(-#{ypos}%)"
-          "-webkit-transform": "translateY(-#{ypos}%)"
+    
+    $scope.infoIsOpen = (productIndex)->
+      return showingProduct.index is productIndex
