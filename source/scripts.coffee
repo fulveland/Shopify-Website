@@ -1,3 +1,4 @@
+# @codekit-append "components/product.coffee"
 # @codekit-append "components/product-info.coffee"
 # @codekit-append "components/variation-container.coffee"
 
@@ -21,6 +22,7 @@ angular.module "FehuApp", [
    "ngTouch"
    
    # Components
+   "Product"
    "ProductInfo"
    "VariationContainer"
    

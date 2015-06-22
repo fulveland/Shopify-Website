@@ -648,8 +648,7 @@ variation-container {
         cursor: w-resize; }
 
 #shop ng-view {
-  max-width: none;
-  padding-bottom: 1.4vmin; }
+  max-width: none; }
 
 #wholesale h2 {
   padding: 1em 0;

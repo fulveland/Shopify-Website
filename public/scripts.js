@@ -2,52 +2,68 @@
 (function() {
   var StubProducts;
 
-  angular.module("FehuApp", ["ngRoute", "ngTouch", "ProductInfo", "VariationContainer", "About", "Locations", "Shop", "Wholesale", "Ease", "PageStyle", "Products", "PureMath", "Routes", "ScrollAnimation", "StubProducts"]);
+  angular.module("FehuApp", ["ngRoute", "ngTouch", "Product", "ProductInfo", "VariationContainer", "About", "Locations", "Shop", "Wholesale", "Ease", "PageStyle", "Products", "PureMath", "Routes", "ScrollAnimation", "StubProducts"]);
 
-  angular.module("ProductInfo", []).directive("productInfo", function() {
+  angular.module("Product", []).directive("product", function() {
     return {
-      templateUrl: "product-info.html",
-      controller: function() {
-        return "cool";
+      templateUrl: "product.html",
+      controller: function($scope) {
+        var showingProduct;
+        showingProduct = {
+          index: null,
+          scope: null
+        };
+        $scope.variationsCount = function(productIndex) {
+          return $scope.products[productIndex].variations.length;
+        };
+        $scope.getVariation = function(productIndex, variationIndex) {
+          var variations;
+          variations = $scope.products[productIndex].variations;
+          return variations[(variationIndex + variations.length) % variations.length] || {};
+        };
+        $scope.hasVariation = function(productIndex, variationIndex) {
+          var variations;
+          variations = $scope.products[productIndex].variations;
+          return variations[(variationIndex + variations.length) % variations.length] != null;
+        };
+        $scope.toggleProductInfo = function(productIndex, productScope) {
+          var ref, ref1;
+          if ((ref = showingProduct.scope) != null) {
+            ref.showingProductInfo = false;
+          }
+          if (showingProduct.index === productIndex) {
+            showingProduct.index = null;
+            return showingProduct.scope = null;
+          } else {
+            showingProduct.index = productIndex;
+            showingProduct.scope = productScope;
+            return (ref1 = showingProduct.scope) != null ? ref1.showingProductInfo = true : void 0;
+          }
+        };
+        return $scope.getStyle = function(productIndex) {
+          var style, ypos;
+          if (showingProduct.index === productIndex) {
+            ypos = $scope.products[productIndex].ypos;
+            return style = {
+              transform: "translateY(-" + ypos + "%)",
+              "-webkit-transform": "translateY(-" + ypos + "%)"
+            };
+          }
+        };
       }
     };
   });
 
-  angular.module("VariationContainer", []).directive("variationContainer", function($swipe, $timeout, Ease, ScrollAnimation) {
+  angular.module("ProductInfo", []).directive("productInfo", function() {
+    return {
+      templateUrl: "product-info.html",
+      controller: function() {}
+    };
+  });
+
+  angular.module("VariationContainer", []).directive("variationContainer", function($swipe, $timeout, ScrollAnimation) {
     return {
       templateUrl: "variation-container.html",
-      controller: function($scope, $element) {
-        return $scope.showProductInfo = function(enable) {
-          var rectBefore, scrollTopBefore;
-          if (enable == null) {
-            enable = true;
-          }
-          return;
-          if (enable) {
-            rectBefore = $element[0].getBoundingClientRect();
-            scrollTopBefore = document.body.scrollTop;
-            return $timeout(function() {
-              var endScroll, rectAfter, startScroll;
-              rectAfter = $element[0].getBoundingClientRect();
-              startScroll = document.body.scrollTop - (rectBefore.bottom - rectAfter.bottom);
-              endScroll = rectAfter.bottom + document.body.scrollTop - rectAfter.height / 4;
-              return ScrollAnimation.animate(startScroll, endScroll);
-            });
-          } else {
-            rectBefore = $element[0].getBoundingClientRect();
-            scrollTopBefore = document.body.scrollTop;
-            return $timeout(function() {
-              var endScroll, rectAfter, startScroll;
-              rectAfter = $element[0].getBoundingClientRect();
-              startScroll = document.body.scrollTop - (rectBefore.bottom - rectAfter.bottom);
-              endScroll = rectAfter.top + document.body.scrollTop;
-              if (endScroll < document.body.scrollTop) {
-                return ScrollAnimation.animate(startScroll, endScroll);
-              }
-            });
-          }
-        };
-      },
       link: function(scope, element) {
         var A, B, C, adjustOffsets, animString, animationTime, applyOpacity, applyTranslate, child, clip, dragStart, enableTransition, handlers, i, len, nVariations, productIndex, ref, resetSliderPosition, setSlider, setSliderPosition, setVariation, slider, sliderNG, wrapping;
         animationTime = 400;
@@ -100,8 +116,7 @@
           }
           scope.offsetA = Math.floor((-scope.offset + 2) / 3) * 3;
           scope.offsetB = Math.floor((-scope.offset + 1) / 3) * 3;
-          scope.offsetC = Math.floor((-scope.offset + 0) / 3) * 3;
-          return scope.changeVariation(productIndex, scope.offset);
+          return scope.offsetC = Math.floor((-scope.offset + 0) / 3) * 3;
         };
         enableTransition = function(enable) {
           if (enable == null) {
@@ -369,69 +384,7 @@
   });
 
   angular.module("Shop", []).controller("ShopCtrl", function(Products, $scope) {
-    var product, showingProduct;
-    $scope.showProductInfo = false;
-    $scope.products = Products.all();
-    $scope.currentVariations = (function() {
-      var i, len, ref, results;
-      ref = $scope.products;
-      results = [];
-      for (i = 0, len = ref.length; i < len; i++) {
-        product = ref[i];
-        results.push(0);
-      }
-      return results;
-    })();
-    $scope.variationsCount = function(productIndex) {
-      return $scope.products[productIndex].variations.length;
-    };
-    $scope.changeVariation = function(productIndex, change) {
-      return $scope.currentVariations[productIndex] += change;
-    };
-    $scope.getVariation = function(productIndex, variationIndex) {
-      var variations;
-      variations = $scope.products[productIndex].variations;
-      return variations[(variationIndex + variations.length) % variations.length] || {};
-    };
-    $scope.hasVariation = function(productIndex, variationIndex) {
-      var variations;
-      variations = $scope.products[productIndex].variations;
-      return variations[(variationIndex + variations.length) % variations.length] != null;
-    };
-    showingProduct = {
-      index: null,
-      scope: null
-    };
-    $scope.toggleProductInfo = function(productIndex, productScope) {
-      var ref, ref1, ref2;
-      if ((ref = showingProduct.scope) != null) {
-        ref.showProductInfo(false);
-      }
-      if ((ref1 = showingProduct.scope) != null) {
-        ref1.showingProductInfo = false;
-      }
-      if (showingProduct.index === productIndex) {
-        showingProduct.index = null;
-        return showingProduct.scope = null;
-      } else {
-        showingProduct.index = productIndex;
-        showingProduct.scope = productScope;
-        if ((ref2 = showingProduct.scope) != null) {
-          ref2.showingProductInfo = true;
-        }
-        return productScope.showProductInfo();
-      }
-    };
-    return $scope.getStyle = function(productIndex) {
-      var style, ypos;
-      if (showingProduct.index === productIndex) {
-        console.log(ypos = $scope.products[productIndex].ypos);
-        return style = {
-          transform: "translateY(-" + ypos + "%)",
-          "-webkit-transform": "translateY(-" + ypos + "%)"
-        };
-      }
-    };
+    return $scope.products = Products.all();
   });
 
   angular.module("Wholesale", []).controller("WholesaleCtrl", function($scope) {

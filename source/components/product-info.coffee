@@ -1,6 +1,6 @@
 angular.module "ProductInfo", []
 
 .directive "productInfo", ()->
-	templateUrl: "product-info.html"
-	controller: ()->
-		"cool"
+  templateUrl: "product-info.html"
+  controller: ()->
+    

@@ -961,6 +961,44 @@
 		"shouldRunBless": 0,
 		"useLibsass": 1
 		},
+	"\/source\/components\/product.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/product.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/public\/product.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
+	"\/source\/components\/product.html": {
+		"fileType": 8192,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/product.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/source\/components\/product.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 1,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/source\/components\/product.scss",
+		"outputAbbreviatedPath": "\/public\/product.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 0,
+		"useLibsass": 1
+		},
 	"\/source\/components\/variation-container.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,

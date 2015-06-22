@@ -1,31 +1,7 @@
 angular.module "VariationContainer", []
 
-.directive "variationContainer", ($swipe, $timeout, Ease, ScrollAnimation)->
+.directive "variationContainer", ($swipe, $timeout, ScrollAnimation)->
   templateUrl: "variation-container.html"
-
-  controller: ($scope, $element)->
-    $scope.showProductInfo = (enable = true)->
-      
-      return # DISABLED
-      
-      if enable
-        rectBefore = $element[0].getBoundingClientRect()
-        scrollTopBefore = document.body.scrollTop
-        $timeout ()->
-          rectAfter = $element[0].getBoundingClientRect()
-          startScroll = document.body.scrollTop - (rectBefore.bottom - rectAfter.bottom)
-          endScroll = rectAfter.bottom + document.body.scrollTop - rectAfter.height / 4
-          ScrollAnimation.animate startScroll, endScroll
-      else
-        rectBefore = $element[0].getBoundingClientRect()
-        scrollTopBefore = document.body.scrollTop
-        $timeout ()->
-          rectAfter = $element[0].getBoundingClientRect()
-          startScroll = document.body.scrollTop - (rectBefore.bottom - rectAfter.bottom)
-          endScroll = rectAfter.top + document.body.scrollTop
-          if endScroll < document.body.scrollTop
-            ScrollAnimation.animate startScroll, endScroll
-
   
   link: (scope, element)->
     
@@ -84,7 +60,9 @@ angular.module "VariationContainer", []
       scope.offsetA = Math.floor((-scope.offset+2)/3)*3
       scope.offsetB = Math.floor((-scope.offset+1)/3)*3
       scope.offsetC = Math.floor((-scope.offset+0)/3)*3
-      scope.changeVariation(productIndex, scope.offset)
+      
+      # Function no longer exists
+      # scope.changeVariation(productIndex, scope.offset)
     
     enableTransition = (enable = true)->
       setSlider "transition", (if enable then "transform" + animString else null), true

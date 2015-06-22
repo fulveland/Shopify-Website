@@ -186,6 +186,11 @@
   </shop-info>
 </div>
 </script>
+<script type="text/ng-template" id="product.html"><div ng-class="{showingProductInfo:showingProductInfo}">
+  <variation-container></variation-container>
+  <product-info></product-info>
+</div>
+</script>
 <script type="text/ng-template" id="variation-container.html"><sliding-container>
   <the-slider ng-style="getStyle($index)">
     
@@ -239,11 +244,7 @@
 	</div>
 </div>
 </script>
-<script type="text/ng-template" id="shop.html"><!-- later, make the showingProductInfo class dynamic with ng-class -->
-<div class="product" ng-class="{showingProductInfo:showingProductInfo}" ng-repeat="product in products">
-  <variation-container></variation-container>
-  <product-info></product-info>
-</div>
+<script type="text/ng-template" id="shop.html"><product ng-repeat="product in products"></product>
 </script>
 <script type="text/ng-template" id="wholesale.html"><h2>Wholesale</h2>
 
