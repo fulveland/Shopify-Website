@@ -365,6 +365,11 @@ th {
 a {
   color: rgba(85, 68, 51, 0.7); }
 
+bimg, [bimg] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center; }
+
 h1 {
   font-family: 'amatic'; }
 
@@ -600,43 +605,41 @@ product-info {
   product-info shop-info {
     padding-bottom: 100px; }
 
-variation-container {
+variations {
   display: block;
-  position: relative;
   height: 90vmin;
   min-height: 50vw;
+  padding-left: 50%;
+  margin-top: 2vmin;
   overflow: hidden; }
-  variation-container sliding-container {
+  variations horizontal-slider {
     display: block;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 270vmin;
-    min-width: 150vw;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-    font-size: 0;
-    overflow: hidden; }
-    variation-container sliding-container the-slider {
+    width: calc((90vmin + 2vmin) * 3);
+    min-width: calc((50vw + 2vmin) * 3); }
+    variations horizontal-slider vertical-slider {
       display: block;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+      font-size: 0;
       transition: -webkit-transform 1s;
       transition: transform 1s; }
-      variation-container sliding-container the-slider .variation {
+      variations horizontal-slider vertical-slider variation {
         display: inline-block;
-        width: 90vmin;
-        min-width: 50vw; }
-        variation-container sliding-container the-slider .variation.A, variation-container sliding-container the-slider .variation.C {
+        cursor: pointer;
+        width: calc(90vmin + 2vmin);
+        height: 90vmin;
+        min-width: calc(50vw + 2vmin);
+        min-height: 50vw; }
+        variations horizontal-slider vertical-slider variation.A, variations horizontal-slider vertical-slider variation.C {
           opacity: 0.2; }
-        variation-container sliding-container the-slider .variation img {
-          cursor: pointer;
-          width: 100%; }
-        variation-container sliding-container the-slider .variation.next img {
+        variations horizontal-slider vertical-slider variation.next {
           cursor: e-resize; }
-        variation-container sliding-container the-slider .variation.prev img {
+        variations horizontal-slider vertical-slider variation.prev {
           cursor: w-resize; }
 
 #shop ng-view {
-  max-width: none; }
+  max-width: none;
+  padding-bottom: 2vmin; }
 
 #wholesale h2 {
   padding: 1em 0;

@@ -2,31 +2,229 @@
 (function() {
   var StubProducts;
 
-  angular.module("FehuApp", ["ngRoute", "ngTouch", "Product", "ProductInfo", "VariationContainer", "About", "Locations", "Shop", "Wholesale", "Ease", "PageStyle", "Products", "PureMath", "Routes", "ScrollAnimation", "StubProducts"]);
+  angular.module("FehuApp", ["ngRoute", "ngTouch", "cdUtils", "Product", "ProductInfo", "Variations", "About", "Locations", "Shop", "Wholesale", "Ease", "PageStyle", "Products", "PureMath", "Routes", "ScrollAnimation", "StubProducts"]);
+
+  angular.module("cdUtils", ['bimg', 'cdCurrent', 'cdReverse', 'cdShuffle', 'cdSlug', 'cdStorage', 'ControllerStyle', 'iPromise']);
+
+  angular.module("bimg", []).directive("bimg", [
+    function() {
+      return {
+        link: function(scope, elm, attrs) {
+          return attrs.$observe("bimg", function() {
+            if ((attrs.bimg != null) && attrs.bimg.length > 0) {
+              return elm.css({
+                "background-image": "url(" + attrs.bimg + ")"
+              });
+            }
+          });
+        }
+      };
+    }
+  ]);
+
+  angular.module('cdCurrent', []).directive('cdCurrent', [
+    "$location", function($location) {
+      return function(scope, elm, attrs) {
+        return scope.$on("$routeChangeSuccess", function() {
+          var isCurrent;
+          isCurrent = $location.absUrl().search(attrs.href) >= 0;
+          return elm.toggleClass(attrs.cdCurrent, isCurrent);
+        });
+      };
+    }
+  ]);
+
+  angular.module('cdReverse', []).filter('cdReverse', [
+    function() {
+      return function(items, active) {
+        if (active == null) {
+          active = true;
+        }
+        if (active) {
+          return items.slice().reverse();
+        } else {
+          return items;
+        }
+      };
+    }
+  ]);
+
+  angular.module('cdShuffle', []).factory("cdShuffle", [
+    function() {
+      return function(array, makeCopy) {
+        var i, r, temp;
+        if (makeCopy == null) {
+          makeCopy = true;
+        }
+        if (array instanceof Array) {
+          if (makeCopy) {
+            array = angular.copy(array);
+          }
+          i = array.length;
+          while (--i > 0) {
+            r = Math.random() * (i + 1) | 0;
+            temp = array[i];
+            array[i] = array[r];
+            array[r] = temp;
+          }
+        }
+        return array;
+      };
+    }
+  ]);
+
+  angular.module("cdSlug", []).filter("cdSlug", [
+    function() {
+      return function(input) {
+        return input != null ? typeof input.replace === "function" ? input.replace(/\s/, "-").toLowerCase() : void 0 : void 0;
+      };
+    }
+  ]);
+
+  angular.module('cdStorage', []).service('cdLocalStorage', [
+    "$window", "cdStorageMaker", function($window, cdStorageMaker) {
+      var error;
+      try {
+        return cdStorageMaker($window.localStorage);
+      } catch (_error) {
+        error = _error;
+        console.log("cdStorage: window.localStorage unavailable");
+        console.log(error);
+        return cdStorageMaker({});
+      }
+    }
+  ]).service('cdSessionStorage', [
+    "$window", "cdStorageMaker", function($window, cdStorageMaker) {
+      var error;
+      try {
+        return cdStorageMaker($window.sessionStorage);
+      } catch (_error) {
+        error = _error;
+        console.log("cdStorage: window.sessionStorage unavailable");
+        console.log(error);
+        return cdStorageMaker({});
+      }
+    }
+  ]).service('cdStorageMaker', [
+    function() {
+      var _decode, _encode, cdStorageMaker;
+      _encode = function(v) {
+        return angular.toJson({
+          value: v
+        });
+      };
+      _decode = function(v) {
+        if (v != null) {
+          return angular.fromJson(v).value;
+        }
+      };
+      return cdStorageMaker = function(storage) {
+        var storageAPI;
+        return storageAPI = {
+          has: function(key) {
+            return storage[_encode(key)] != null;
+          },
+          get: function(key) {
+            return _decode(storage[_encode(key)]);
+          },
+          set: function(key, value) {
+            storage[_encode(key)] = _encode(value);
+            return value;
+          },
+          remove: function(key) {
+            return delete storage[_encode(key)];
+          },
+          clearAll: function() {
+            var i, results;
+            results = [];
+            for (i in storage) {
+              results.push(delete storage[i]);
+            }
+            return results;
+          },
+          bind: function(scope, model, initial, custom) {
+            var key, update;
+            if (custom == null) {
+              custom = "";
+            }
+            key = model + custom;
+            if (storageAPI.has(key)) {
+              scope[model] = storageAPI.get(key);
+            } else if (scope[model] == null) {
+              scope[model] = initial;
+              storageAPI.set(key, initial);
+            }
+            update = function(newVal) {
+              return storageAPI.set(key, newVal);
+            };
+            return scope.$watch(model, update, true);
+          }
+        };
+      };
+    }
+  ]);
+
+  angular.module("ControllerStyle", []).run(function($rootScope) {
+    return $rootScope.$on("$routeChangeSuccess", function(e, data) {
+      return $rootScope.ControllerStyle = data.controller;
+    });
+  });
+
+  angular.module('iPromise', []).factory("iPromise", [
+    "$q", function($q) {
+      return function(given) {
+        var deferred;
+        deferred = $q.defer();
+        if (given instanceof Function) {
+          given(deferred);
+        } else {
+          deferred.resolve(given);
+        }
+        return deferred.promise;
+      };
+    }
+  ]);
 
   angular.module("Product", []).directive("product", function() {
     return {
       templateUrl: "product.html",
       controller: function($scope) {
-        var showingProduct;
+        var getProduct, getVariation, infoIsOpen, productYPos, showingProduct;
         showingProduct = {
           index: null,
           scope: null
         };
+        getVariation = function(productIndex, variationIndex) {
+          var variations;
+          variations = $scope.products[productIndex].variations;
+          return variations[(variationIndex + variations.length) % variations.length];
+        };
+        infoIsOpen = function(productIndex) {
+          return showingProduct.index === productIndex;
+        };
+        productYPos = function(productIndex) {
+          return $scope.products[productIndex].ypos;
+        };
+        getProduct = function(productIndex) {
+          return $scope.products[productIndex];
+        };
         $scope.variationsCount = function(productIndex) {
-          return $scope.products[productIndex].variations.length;
+          return getProduct(productIndex).variations.length;
         };
-        $scope.getVariation = function(productIndex, variationIndex) {
-          var variations;
-          variations = $scope.products[productIndex].variations;
-          return variations[(variationIndex + variations.length) % variations.length] || {};
+        $scope.getHero = function(productIndex, variationIndex) {
+          var ref;
+          return (ref = getVariation(productIndex, variationIndex)) != null ? ref.hero : void 0;
         };
-        $scope.hasVariation = function(productIndex, variationIndex) {
-          var variations;
-          variations = $scope.products[productIndex].variations;
-          return variations[(variationIndex + variations.length) % variations.length] != null;
+        $scope.getVerticalPositionStyle = function(productIndex) {
+          var style, translate, ypos;
+          ypos = infoIsOpen(productIndex) ? productYPos(productIndex) : 0;
+          translate = "translate(-50%, -" + ypos + "%)";
+          return style = {
+            transform: translate,
+            "-webkit-transform": translate
+          };
         };
-        $scope.toggleProductInfo = function(productIndex, productScope) {
+        return $scope.toggleProductInfo = function(productIndex, productScope) {
           var ref, ref1;
           if ((ref = showingProduct.scope) != null) {
             ref.showingProductInfo = false;
@@ -40,9 +238,6 @@
             return (ref1 = showingProduct.scope) != null ? ref1.showingProductInfo = true : void 0;
           }
         };
-        return $scope.infoIsOpen = function(productIndex) {
-          return showingProduct.index === productIndex;
-        };
       }
     };
   });
@@ -54,23 +249,11 @@
     };
   });
 
-  angular.module("VariationContainer", []).directive("variationContainer", function($swipe, $timeout, ScrollAnimation) {
+  angular.module("Variations", []).directive("variations", function($swipe, $timeout, ScrollAnimation) {
     return {
-      templateUrl: "variation-container.html",
-      controller: function($scope) {
-        return $scope.getStyle = function(productIndex) {
-          var style, ypos;
-          if ($scope.infoIsOpen(productIndex)) {
-            ypos = $scope.products[productIndex].ypos;
-            return style = {
-              transform: "translateY(-" + ypos + "%)",
-              "-webkit-transform": "translateY(-" + ypos + "%)"
-            };
-          }
-        };
-      },
+      templateUrl: "variations.html",
       link: function(scope, element) {
-        var A, B, C, adjustOffsets, animString, animationTime, applyOpacity, applyTranslate, child, clip, dragStart, enableTransition, handlers, i, len, nVariations, productIndex, ref, resetSliderPosition, setSlider, setSliderPosition, setVariation, slider, sliderNG, wrapping;
+        var A, B, C, adjustOffsets, animString, animationTime, applyOpacity, applyTranslate, clip, dragStart, enableTransition, handlers, nVariations, productIndex, resetSliderPosition, setSlider, setSliderPosition, setVariation, slider, sliderNG, wrapping;
         animationTime = 400;
         animString = " " + animationTime + "ms cubic-bezier(.16,.56,.5,1)";
         wrapping = true;
@@ -81,23 +264,11 @@
         scope.offsetC = 0;
         productIndex = scope.$index;
         nVariations = scope.variationsCount(productIndex);
-        sliderNG = element.children().children();
-        slider = sliderNG[0];
-        A = B = C = null;
-        ref = slider.children;
-        for (i = 0, len = ref.length; i < len; i++) {
-          child = ref[i];
-          switch (child.className) {
-            case "variation A":
-              A = child;
-              break;
-            case "variation B":
-              B = child;
-              break;
-            case "variation C":
-              C = child;
-          }
-        }
+        slider = element[0].querySelector("horizontal-slider");
+        sliderNG = angular.element(slider);
+        A = slider.querySelector(".A");
+        B = slider.querySelector(".B");
+        C = slider.querySelector(".C");
         setVariation = function(variation, prop, value) {
           variation.style["-webkit-" + prop] = value;
           variation.style["-ms-" + prop] = value;
@@ -133,11 +304,11 @@
           return C.style.transition = (enable ? "opacity" + animString : null);
         };
         applyTranslate = function(x) {
-          x += scope.offset * slider.offsetHeight;
+          x += scope.offset * A.offsetWidth;
           setSlider("transform", "translateX(" + x + "px)");
-          setVariation(A, "transform", "translateX(" + (scope.offsetA * slider.offsetHeight) + "px)");
-          setVariation(B, "transform", "translateX(" + (scope.offsetB * slider.offsetHeight) + "px)");
-          return setVariation(C, "transform", "translateX(" + (scope.offsetC * slider.offsetHeight) + "px)");
+          setVariation(A, "transform", "translateX(" + (scope.offsetA * A.offsetWidth) + "px)");
+          setVariation(B, "transform", "translateX(" + (scope.offsetB * A.offsetWidth) + "px)");
+          return setVariation(C, "transform", "translateX(" + (scope.offsetC * A.offsetWidth) + "px)");
         };
         applyOpacity = function(v) {
           v += scope.offset;
@@ -147,7 +318,7 @@
         };
         setSliderPosition = function(x) {
           applyTranslate(x);
-          return applyOpacity(x / slider.offsetHeight);
+          return applyOpacity(x / A.offsetWidth);
         };
         resetSliderPosition = function() {
           return setSliderPosition(0);
@@ -166,10 +337,10 @@
             var x;
             x = pos.x - dragStart;
             enableTransition(true);
-            if (x > slider.offsetHeight / 5) {
+            if (x > A.offsetWidth / 5) {
               adjustOffsets(1);
             }
-            if (x < -slider.offsetHeight / 5) {
+            if (x < -A.offsetWidth / 5) {
               adjustOffsets(-1);
             }
             return scope.$apply(function() {
@@ -177,7 +348,6 @@
             });
           }
         };
-        $swipe.bind(sliderNG, handlers, ["touch"]);
         scope.clickAction = function(shift) {
           if (shift > 0) {
             enableTransition();
@@ -191,7 +361,7 @@
             return scope.toggleProductInfo(productIndex, scope);
           }
         };
-        return scope.getClass = function(shift) {
+        scope.getClass = function(shift) {
           if (shift > 0) {
             return "next";
           } else if (shift < 0) {
@@ -200,6 +370,10 @@
             return "current";
           }
         };
+        $swipe.bind(sliderNG, handlers, ["touch"]);
+        return window.addEventListener("resize", function(e) {
+          return resetSliderPosition();
+        });
       }
     };
   });
@@ -209,7 +383,7 @@
   angular.module("Events", []).controller("EventsCtrl", function() {});
 
   angular.module("Locations", []).controller("LocationsCtrl", function($scope) {
-    var base, country, i, len, location, name, name1, province, ref;
+    var base, country, j, len, location, name, name1, province, ref;
     $scope.locations = [
       {
         "name": "Make at Granville Island",
@@ -360,8 +534,8 @@
     $scope.allProvinces = "Province";
     $scope.searchProvince = $scope.allProvinces;
     ref = $scope.locations;
-    for (i = 0, len = ref.length; i < len; i++) {
-      location = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      location = ref[j];
       country = (base = $scope.countries)[name = location.country] != null ? base[name] : base[name] = {};
       province = country[name1 = location.province] != null ? country[name1] : country[name1] = [];
       province.push(location);
@@ -672,6 +846,18 @@
           hero: "assets/coffee-and-crystals-pyrite.jpg"
         }, {
           hero: "assets/coffee-and-crystals-green-turquoise.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-light-turquoise.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-malachite.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-lapis.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-jasper.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-smokey-quartz.jpg"
+        }, {
+          hero: "assets/coffee-and-crystals-goldstone.jpg"
         }
       ]
     }, {

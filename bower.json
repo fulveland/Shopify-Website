@@ -11,7 +11,8 @@
     "angular": "angular#1.4.x",
     "angular-route": "angular-route#1.4.x",
     "angular-touch": "angular-touch#1.4.x",
-    "cd-reset": "cdig/cd-reset"
+    "cd-reset": "cdig/cd-reset",
+    "cd-utils": "cdig/cd-utils"
   },
   "private": true
 }

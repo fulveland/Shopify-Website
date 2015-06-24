@@ -1,6 +1,8 @@
+# @codekit-append "../bower_components/cd-utils/dist/cd-utils.coffee"
+
 # @codekit-append "components/product.coffee"
 # @codekit-append "components/product-info.coffee"
-# @codekit-append "components/variation-container.coffee"
+# @codekit-append "components/variations.coffee"
 
 # @codekit-append "pages/about.coffee"
 # @codekit-append "pages/events.coffee"
@@ -20,11 +22,12 @@ angular.module "FehuApp", [
    # Libs
    "ngRoute"
    "ngTouch"
+   "cdUtils"
    
    # Components
    "Product"
    "ProductInfo"
-   "VariationContainer"
+   "Variations"
    
    # Pages
    "About"

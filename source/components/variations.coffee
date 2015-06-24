@@ -1,24 +1,14 @@
-angular.module "VariationContainer", []
+angular.module "Variations", []
 
-.directive "variationContainer", ($swipe, $timeout, ScrollAnimation)->
-  templateUrl: "variation-container.html"
-  
-  controller: ($scope)->
-
-    $scope.getStyle = (productIndex)->
-      if $scope.infoIsOpen(productIndex)
-        ypos = $scope.products[productIndex].ypos
-        return style =
-          transform: "translateY(-#{ypos}%)"
-          "-webkit-transform": "translateY(-#{ypos}%)"
-
+.directive "variations", ($swipe, $timeout, ScrollAnimation)->
+  templateUrl: "variations.html"
   
   link: (scope, element)->
     
     ## CONFIG
     animationTime = 400
     animString = " #{animationTime}ms cubic-bezier(.16,.56,.5,1)" # Must begin with a space
-    wrapping = true
+    wrapping = true # Whether or not to infinitely wrap around at the left/right ends
         
     
     ## STATE
@@ -34,15 +24,12 @@ angular.module "VariationContainer", []
     productIndex = scope.$index
     nVariations = scope.variationsCount(productIndex)
     
-    sliderNG = element.children().children()
-    slider = sliderNG[0]
+    slider = element[0].querySelector "horizontal-slider"
+    sliderNG = angular.element slider
     
-    A = B = C = null
-    for child in slider.children
-      switch child.className
-        when "variation A" then A = child
-        when "variation B" then B = child
-        when "variation C" then C = child
+    A = slider.querySelector ".A"
+    B = slider.querySelector ".B"
+    C = slider.querySelector ".C"
     
     
     ## HELPERS
@@ -81,11 +68,11 @@ angular.module "VariationContainer", []
       C.style.transition = (if enable then "opacity" + animString else null)
     
     applyTranslate = (x)->
-      x += scope.offset * slider.offsetHeight
+      x += scope.offset * A.offsetWidth
       setSlider "transform", "translateX(#{x}px)"
-      setVariation A, "transform", "translateX(#{scope.offsetA * slider.offsetHeight}px)"
-      setVariation B, "transform", "translateX(#{scope.offsetB * slider.offsetHeight}px)"
-      setVariation C, "transform", "translateX(#{scope.offsetC * slider.offsetHeight}px)"
+      setVariation A, "transform", "translateX(#{scope.offsetA * A.offsetWidth}px)"
+      setVariation B, "transform", "translateX(#{scope.offsetB * A.offsetWidth}px)"
+      setVariation C, "transform", "translateX(#{scope.offsetC * A.offsetWidth}px)"
     
     applyOpacity = (v)->
       v += scope.offset
@@ -95,10 +82,11 @@ angular.module "VariationContainer", []
     
     setSliderPosition = (x)->
       applyTranslate x
-      applyOpacity x / slider.offsetHeight
+      applyOpacity x / A.offsetWidth
     
     resetSliderPosition = ()->
       setSliderPosition(0)
+    
     
     ## SWIPE HANDLERS
     
@@ -114,14 +102,9 @@ angular.module "VariationContainer", []
       end: (pos)->
         x = pos.x - dragStart
         enableTransition true
-        if x >  slider.offsetHeight / 5 then adjustOffsets 1
-        if x < -slider.offsetHeight / 5 then adjustOffsets -1
+        if x >  A.offsetWidth / 5 then adjustOffsets 1
+        if x < -A.offsetWidth / 5 then adjustOffsets -1
         scope.$apply ()-> resetSliderPosition()
-    
-    
-    ## SWIPE SETUP
-    
-    $swipe.bind sliderNG, handlers, ["touch"]
     
     
     ## SCOPE FUNCTIONS
@@ -145,3 +128,13 @@ angular.module "VariationContainer", []
         "prev"
       else
         "current"
+    
+    
+    ## EVENT LISTENING
+    
+    $swipe.bind sliderNG, handlers, ["touch"]
+    
+    window.addEventListener "resize", (e)->
+      
+      # This might be problematic if they are swiping while the resize occurs
+      resetSliderPosition()

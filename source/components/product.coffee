@@ -8,16 +8,31 @@ angular.module "Product", []
       index: null
       scope: null
     
+    getVariation = (productIndex, variationIndex)->
+      variations = $scope.products[productIndex].variations
+      return variations[(variationIndex + variations.length) % variations.length]
+
+    infoIsOpen = (productIndex)->
+      return showingProduct.index is productIndex
+    
+    productYPos = (productIndex)->
+      return $scope.products[productIndex].ypos
+    
+    getProduct = (productIndex)->
+      return $scope.products[productIndex]
+    
     $scope.variationsCount = (productIndex)->
-      return $scope.products[productIndex].variations.length
+      return getProduct(productIndex).variations.length
     
-    $scope.getVariation = (productIndex, variationIndex)->
-      variations = $scope.products[productIndex].variations
-      return variations[(variationIndex + variations.length) % variations.length] or {}
+    $scope.getHero = (productIndex, variationIndex)->
+      return getVariation(productIndex, variationIndex)?.hero
     
-    $scope.hasVariation = (productIndex, variationIndex)->
-      variations = $scope.products[productIndex].variations
-      return variations[(variationIndex + variations.length) % variations.length]?
+    $scope.getVerticalPositionStyle = (productIndex)->
+      ypos = if infoIsOpen(productIndex) then productYPos(productIndex) else 0
+      translate = "translate(-50%, -#{ypos}%)"
+      return style =
+        transform: translate
+        "-webkit-transform": translate
     
     $scope.toggleProductInfo = (productIndex, productScope)->
       showingProduct.scope?.showingProductInfo = false
@@ -29,6 +44,3 @@ angular.module "Product", []
         showingProduct.index = productIndex
         showingProduct.scope = productScope
         showingProduct.scope?.showingProductInfo = true
-    
-    $scope.infoIsOpen = (productIndex)->
-      return showingProduct.index is productIndex
