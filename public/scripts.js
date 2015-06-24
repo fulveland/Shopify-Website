@@ -189,54 +189,32 @@
     return {
       templateUrl: "product.html",
       controller: function($scope) {
-        var getProduct, getVariation, infoIsOpen, productYPos, showingProduct;
-        showingProduct = {
-          index: null,
-          scope: null
-        };
-        getVariation = function(productIndex, variationIndex) {
+        var getVariation, productIndex;
+        productIndex = $scope.$index;
+        $scope.variation = $scope.product.variations[0];
+        getVariation = function(variationIndex) {
           var variations;
-          variations = $scope.products[productIndex].variations;
+          variations = $scope.product.variations;
           return variations[(variationIndex + variations.length) % variations.length];
         };
-        infoIsOpen = function(productIndex) {
-          return showingProduct.index === productIndex;
+        $scope.variationsCount = function() {
+          return $scope.product.variations.length;
         };
-        productYPos = function(productIndex) {
-          return $scope.products[productIndex].ypos;
-        };
-        getProduct = function(productIndex) {
-          return $scope.products[productIndex];
-        };
-        $scope.variationsCount = function(productIndex) {
-          return getProduct(productIndex).variations.length;
-        };
-        $scope.getHero = function(productIndex, variationIndex) {
+        $scope.getHero = function(variationIndex) {
           var ref;
-          return (ref = getVariation(productIndex, variationIndex)) != null ? ref.hero : void 0;
+          return (ref = getVariation(variationIndex)) != null ? ref.hero : void 0;
         };
-        $scope.getVerticalPositionStyle = function(productIndex) {
+        $scope.getVerticalPositionStyle = function() {
           var style, translate, ypos;
-          ypos = infoIsOpen(productIndex) ? productYPos(productIndex) : 0;
+          ypos = $scope.infoIsOpen(productIndex) ? $scope.product.ypos : 0;
           translate = "translate(-50%, -" + ypos + "%)";
           return style = {
             transform: translate,
             "-webkit-transform": translate
           };
         };
-        return $scope.toggleProductInfo = function(productIndex, productScope) {
-          var ref, ref1;
-          if ((ref = showingProduct.scope) != null) {
-            ref.showingProductInfo = false;
-          }
-          if (showingProduct.index === productIndex) {
-            showingProduct.index = null;
-            return showingProduct.scope = null;
-          } else {
-            showingProduct.index = productIndex;
-            showingProduct.scope = productScope;
-            return (ref1 = showingProduct.scope) != null ? ref1.showingProductInfo = true : void 0;
-          }
+        return $scope.changeVariation = function(variationIndex) {
+          return $scope.variation = getVariation(variationIndex);
         };
       }
     };
@@ -263,7 +241,7 @@
         scope.offsetB = 0;
         scope.offsetC = 0;
         productIndex = scope.$index;
-        nVariations = scope.variationsCount(productIndex);
+        nVariations = scope.variationsCount();
         slider = element[0].querySelector("horizontal-slider");
         sliderNG = angular.element(slider);
         A = slider.querySelector(".A");
@@ -292,7 +270,8 @@
           }
           scope.offsetA = Math.floor((-scope.offset + 2) / 3) * 3;
           scope.offsetB = Math.floor((-scope.offset + 1) / 3) * 3;
-          return scope.offsetC = Math.floor((-scope.offset + 0) / 3) * 3;
+          scope.offsetC = Math.floor((-scope.offset + 0) / 3) * 3;
+          return scope.changeVariation(-scope.offset);
         };
         enableTransition = function(enable) {
           if (enable == null) {
@@ -563,73 +542,33 @@
   });
 
   angular.module("Shop", []).controller("ShopCtrl", function(Products, $scope) {
-    return $scope.products = Products.all();
+    var showingProduct;
+    showingProduct = {
+      index: null,
+      scope: null
+    };
+    $scope.products = Products.all();
+    $scope.infoIsOpen = function(productIndex) {
+      return showingProduct.index === productIndex;
+    };
+    return $scope.toggleProductInfo = function(productIndex, productScope) {
+      var ref, ref1;
+      if ((ref = showingProduct.scope) != null) {
+        ref.showingProductInfo = false;
+      }
+      if (showingProduct.index === productIndex) {
+        showingProduct.index = null;
+        return showingProduct.scope = null;
+      } else {
+        showingProduct.index = productIndex;
+        showingProduct.scope = productScope;
+        return (ref1 = showingProduct.scope) != null ? ref1.showingProductInfo = true : void 0;
+      }
+    };
   });
 
-  angular.module("Wholesale", []).controller("WholesaleCtrl", function($scope) {
-    return $scope.products = [
-      {
-        image: "assets/wrap-cuff-bark-a.png"
-      }, {
-        image: "assets/wrap-cuff-green.jpg"
-      }, {
-        image: "assets/wrap-cuff-pink.jpg"
-      }, {
-        image: "assets/wrap-cuff-pumpkin.jpg"
-      }, {
-        image: "assets/wrap-cuff-slate.png"
-      }, {
-        image: "assets/wrap-cuff-turq.jpg"
-      }, {
-        image: "assets/wrap-cuff-orangesicle.jpg"
-      }, {
-        image: "assets/wrap-cuff-violet.jpg"
-      }, {
-        image: "assets/wrap-cuff-bark-a.png"
-      }, {
-        image: "assets/wrap-cuff-green.jpg"
-      }, {
-        image: "assets/wrap-cuff-pink.jpg"
-      }, {
-        image: "assets/wrap-cuff-pumpkin.jpg"
-      }, {
-        image: "assets/wrap-cuff-slate.png"
-      }, {
-        image: "assets/wrap-cuff-turq.jpg"
-      }, {
-        image: "assets/wrap-cuff-orangesicle.jpg"
-      }, {
-        image: "assets/wrap-cuff-violet.jpg"
-      }, {
-        image: "assets/wrap-cuff-bark-a.png"
-      }, {
-        image: "assets/wrap-cuff-green.jpg"
-      }, {
-        image: "assets/wrap-cuff-pink.jpg"
-      }, {
-        image: "assets/wrap-cuff-pumpkin.jpg"
-      }, {
-        image: "assets/wrap-cuff-slate.png"
-      }, {
-        image: "assets/wrap-cuff-turq.jpg"
-      }, {
-        image: "assets/wrap-cuff-orangesicle.jpg"
-      }, {
-        image: "assets/wrap-cuff-violet.jpg"
-      }, {
-        image: "assets/wrap-cuff-bark-a.png"
-      }, {
-        image: "assets/wrap-cuff-green.jpg"
-      }, {
-        image: "assets/wrap-cuff-pink.jpg"
-      }, {
-        image: "assets/wrap-cuff-pumpkin.jpg"
-      }, {
-        image: "assets/wrap-cuff-slate.png"
-      }, {
-        image: "assets/wrap-cuff-turq.jpg"
-      }
-    ];
+  angular.module("Wholesale", []).controller("WholesaleCtrl", function(Products, $scope) {
+    return $scope.products = Products.all();
   });
 
   angular.module("Ease", []).service("Ease", function(PureMath) {
@@ -831,62 +770,147 @@
 
   angular.module("StubProducts", []).constant("StubProducts", StubProducts = [
     {
+      name: "Raw Ring",
       ypos: 23,
       variations: [
         {
-          hero: "assets/raw-ring.jpg"
+          name: "Nude",
+          white: "assets/white/raw-ring.jpg",
+          hero: "assets/hero/raw-ring.jpg"
         }
       ]
     }, {
+      name: "Coffee & Crystals Bracelet",
       ypos: 18,
       variations: [
         {
-          hero: "assets/coffee-and-crystals-howlite.jpg"
+          name: "Howlite",
+          white: "assets/white/coffee-and-crystals-howlite.jpg",
+          hero: "assets/hero/coffee-and-crystals-howlite.jpg"
         }, {
-          hero: "assets/coffee-and-crystals-pyrite.jpg"
+          name: "Pyrite",
+          white: "assets/white/coffee-and-crystals-pyrite.jpg",
+          hero: "assets/hero/coffee-and-crystals-pyrite.jpg"
         }, {
-          hero: "assets/coffee-and-crystals-green-turquoise.jpg"
+          name: "Green Turquoise",
+          white: "assets/white/coffee-and-crystals-green-turquoise.jpg",
+          hero: "assets/hero/coffee-and-crystals-green-turquoise.jpg"
         }, {
-          hero: "assets/coffee-and-crystals-light-turquoise.jpg"
+          name: "Light Turquoise",
+          white: "assets/white/coffee-and-crystals-light-turquoise.jpg",
+          hero: "assets/hero/coffee-and-crystals-light-turquoise.jpg"
         }, {
-          hero: "assets/coffee-and-crystals-malachite.jpg"
+          name: "Malachite",
+          white: "assets/white/coffee-and-crystals-malachite.jpg",
+          hero: "assets/hero/coffee-and-crystals-malachite.jpg"
         }, {
-          hero: "assets/coffee-and-crystals-lapis.jpg"
+          name: "Lapis",
+          white: "assets/white/coffee-and-crystals-lapis.jpg",
+          hero: "assets/hero/coffee-and-crystals-lapis.jpg"
         }, {
-          hero: "assets/coffee-and-crystals-jasper.jpg"
+          name: "Jasper",
+          white: "assets/white/coffee-and-crystals-jasper.jpg",
+          hero: "assets/hero/coffee-and-crystals-jasper.jpg"
         }, {
-          hero: "assets/coffee-and-crystals-smokey-quartz.jpg"
+          name: "Smokey Quartz",
+          white: "assets/white/coffee-and-crystals-smokey-quartz.jpg",
+          hero: "assets/hero/coffee-and-crystals-smokey-quartz.jpg"
         }, {
-          hero: "assets/coffee-and-crystals-goldstone.jpg"
+          name: "Goldstone",
+          white: "assets/white/coffee-and-crystals-goldstone.jpg",
+          hero: "assets/hero/coffee-and-crystals-goldstone.jpg"
         }
       ]
     }, {
+      name: "Wrap Cuff",
+      ypos: 25,
+      variations: [
+        {
+          name: "Bark",
+          white: "assets/white/wrap-cuff-bark-a.jpg",
+          hero: "assets/hero/wrap-cuff-bark-a.png"
+        }, {
+          name: "Green",
+          white: "assets/white/wrap-cuff-green.jpg",
+          hero: "assets/hero/wrap-cuff-green.jpg"
+        }, {
+          name: "Pink",
+          white: "assets/white/wrap-cuff-pink.jpg",
+          hero: "assets/hero/wrap-cuff-pink.jpg"
+        }, {
+          name: "Pumpkin",
+          white: "assets/white/wrap-cuff-pumpkin.jpg",
+          hero: "assets/hero/wrap-cuff-pumpkin.jpg"
+        }, {
+          name: "Slate",
+          white: "assets/white/wrap-cuff-slate.jpg",
+          hero: "assets/hero/wrap-cuff-slate.png"
+        }, {
+          name: "Turq",
+          white: "assets/white/wrap-cuff-turq.jpg",
+          hero: "assets/hero/wrap-cuff-turq.jpg"
+        }, {
+          name: "Orangesicle",
+          white: "assets/white/wrap-cuff-orangesicle.jpg",
+          hero: "assets/hero/wrap-cuff-orangesicle.jpg"
+        }, {
+          name: "Violet",
+          white: "assets/white/wrap-cuff-violet.jpg",
+          hero: "assets/hero/wrap-cuff-violet.jpg"
+        }
+      ]
+    }, {
+      name: "Fuzzy Cuff",
       ypos: 33,
       variations: [
         {
-          hero: "assets/fuzzy-cuff-1.jpg"
+          name: "Painter",
+          white: "assets/white/fuzzy-cuff-1.jpg",
+          hero: "assets/hero/fuzzy-cuff-1.jpg"
         }, {
-          hero: "assets/fuzzy-cuff-2.jpg"
+          name: "Mo",
+          white: "assets/white/fuzzy-cuff-2.jpg",
+          hero: "assets/hero/fuzzy-cuff-2.jpg"
         }, {
-          hero: "assets/fuzzy-cuff-3.jpg"
+          name: "Spook",
+          white: "assets/white/fuzzy-cuff-3.jpg",
+          hero: "assets/hero/fuzzy-cuff-3.jpg"
         }, {
-          hero: "assets/fuzzy-cuff-4.jpg"
+          name: "Duster",
+          white: "assets/white/fuzzy-cuff-4.jpg",
+          hero: "assets/hero/fuzzy-cuff-4.jpg"
         }, {
-          hero: "assets/fuzzy-cuff-5.jpg"
+          name: "Grumble",
+          white: "assets/white/fuzzy-cuff-5.jpg",
+          hero: "assets/hero/fuzzy-cuff-5.jpg"
         }, {
-          hero: "assets/fuzzy-cuff-6.jpg"
+          name: "Tippy",
+          white: "assets/white/fuzzy-cuff-6.jpg",
+          hero: "assets/hero/fuzzy-cuff-6.jpg"
         }, {
-          hero: "assets/fuzzy-cuff-7.jpg"
+          name: "Wizen",
+          white: "assets/white/fuzzy-cuff-7.jpg",
+          hero: "assets/hero/fuzzy-cuff-7.jpg"
         }, {
-          hero: "assets/fuzzy-cuff-8.jpg"
+          name: "Chief",
+          white: "assets/white/fuzzy-cuff-8.jpg",
+          hero: "assets/hero/fuzzy-cuff-8.jpg"
         }, {
-          hero: "assets/fuzzy-cuff-9.jpg"
+          name: "Fluffle",
+          white: "assets/white/fuzzy-cuff-9.jpg",
+          hero: "assets/hero/fuzzy-cuff-9.jpg"
         }, {
-          hero: "assets/fuzzy-cuff-10.jpg"
+          name: "Wiley",
+          white: "assets/white/fuzzy-cuff-10.jpg",
+          hero: "assets/hero/fuzzy-cuff-10.jpg"
         }, {
-          hero: "assets/fuzzy-cuff-11.jpg"
+          name: "Bean",
+          white: "assets/white/fuzzy-cuff-11.jpg",
+          hero: "assets/hero/fuzzy-cuff-11.jpg"
         }, {
-          hero: "assets/fuzzy-cuff-12.jpg"
+          name: "Hunt",
+          white: "assets/white/fuzzy-cuff-12.jpg",
+          hero: "assets/hero/fuzzy-cuff-12.jpg"
         }
       ]
     }

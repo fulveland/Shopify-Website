@@ -24,13 +24,13 @@
     <row class="C">
       <block class="out s6"><a href="#/bracelets">Bracelets</a></block>
       <block class="in s2 glyphs" href="#/">
-        <a href="https://www.twitter.com"><img src="assets/ui-glyph-twitter.png"></a><!-- kill whitespace
-     --><a href="https://www.pinterest.com"><img src="assets/ui-glyph-pinterest.png"></a>
+        <a href="https://www.twitter.com"><img src="assets/ui/ui-glyph-twitter.png"></a><!-- kill whitespace
+     --><a href="https://www.pinterest.com"><img src="assets/ui/ui-glyph-pinterest.png"></a>
       </block>
       <space class="s8"></space>
       <block class="in s2 glyphs" href="#/">
-        <a href="https://www.facebook.com"><img src="assets/ui-glyph-facebook.png"></a><!-- kill whitespace
-     --><a href="https://www.instagram.com"><img src="assets/ui-glyph-instagram.png"></a>
+        <a href="https://www.facebook.com"><img src="assets/ui/ui-glyph-facebook.png"></a><!-- kill whitespace
+     --><a href="https://www.instagram.com"><img src="assets/ui/ui-glyph-instagram.png"></a>
       </block>
       <block class="out s6"><a href="#/necklaces">Necklaces</a></block>
     </row>
@@ -58,8 +58,8 @@
 
 <script type="text/ng-template" id="product-info.html"><div class="wrapper">
   <identity-info>
-    <h1>Turquoise</h1>
-    <h2>Coffee & Crystal Bracelet</h2>
+    <h1>{{variation.name}}</h1>
+    <h2>{{product.name}}</h2>
   </identity-info>
 
   <descriptive-info>
@@ -121,34 +121,34 @@
     
     <h3>Putting on a Wrap Cuff</h3>
     <div class="tut">
-      <img src="assets/wrap-cuff-tut-1.png" />
+      <img src="assets/tut/wrap-cuff-tut-1.png" />
       <p>Loosen the cuff. Slide it onto your wrist.</p>
     </div>
     <div class="tut">
-      <img src="assets/wrap-cuff-tut-2.png" />
+      <img src="assets/tut/wrap-cuff-tut-2.png" />
       <p>Pull the tail to tighten.</p>
     </div>
     <div class="tut">
-      <img src="assets/wrap-cuff-tut-3.png" />
+      <img src="assets/tut/wrap-cuff-tut-3.png" />
       <p>Squeeze the sides. The slot will pop open.</p>
     </div>
     <div class="tut">
-      <img src="assets/wrap-cuff-tut-4.png" />
+      <img src="assets/tut/wrap-cuff-tut-4.png" />
       <p>Slip the tail back through the slot.</p>
     </div>
     
     <h3>Extra tail? Tuck it in!</h3>
     
     <div class="tut">
-      <img src="assets/wrap-cuff-tut-5.png" />
+      <img src="assets/tut/wrap-cuff-tut-5.png" />
       <p>Pull the tail up...</p>
     </div>
     <div class="tut">
-      <img src="assets/wrap-cuff-tut-6.png" />
+      <img src="assets/tut/wrap-cuff-tut-6.png" />
       <p>...around...</p>
     </div>
     <div class="tut">
-      <img src="assets/wrap-cuff-tut-7.png" />
+      <img src="assets/tut/wrap-cuff-tut-7.png" />
       <p>....and down!</p>
     </div>
     
@@ -191,10 +191,10 @@
 </div>
 </script>
 <script type="text/ng-template" id="variations.html"><horizontal-slider>
-  <vertical-slider ng-style="getVerticalPositionStyle($index)">
-    <variation class="A" ng-class="getClass(offset+offsetA-1)" ng-click="clickAction(offset+offsetA-1)" bimg="{{getHero($index, offsetA-1)}}"></variation>
-    <variation class="B" ng-class="getClass(offset+offsetB)"   ng-click="clickAction(offset+offsetB)"   bimg="{{getHero($index, offsetB)}}"  ></variation>
-    <variation class="C" ng-class="getClass(offset+offsetC+1)" ng-click="clickAction(offset+offsetC+1)" bimg="{{getHero($index, offsetC+1)}}"></variation>
+  <vertical-slider ng-style="getVerticalPositionStyle()">
+    <variation class="A" ng-class="getClass(offset+offsetA-1)" ng-click="clickAction(offset+offsetA-1)" bimg="{{getHero(offsetA-1)}}"></variation>
+    <variation class="B" ng-class="getClass(offset+offsetB)"   ng-click="clickAction(offset+offsetB)"   bimg="{{getHero(offsetB)}}"  ></variation>
+    <variation class="C" ng-class="getClass(offset+offsetC+1)" ng-click="clickAction(offset+offsetC+1)" bimg="{{getHero(offsetC+1)}}"></variation>
   </vertical-slider>
 </horizontal-slider>
 </script>
@@ -244,36 +244,39 @@
 <h2>Order</h2>
 
 <div class="calculator">
-	<div>47</div>
-	<div>Wrap Cuffs </div>
-	<div> X </div>
-	<div>$17</div>
-	<div>=</div>
-	<div>$0</div>
+  <div>47</div>
+  <div>Wrap Cuffs </div>
+  <div> X </div>
+  <div>$17</div>
+  <div>=</div>
+  <div>$0</div>
 </div>
 
 <div class="order-line-up">
-	
-	<div class="product" ng-repeat="product in products">
-		<img src="{{product.image}}">
-		<div class="quantity">
-			<div class="plus button">-</div>
-			<div class="value">0</div>
-			<div class="minus button">+</div>
-		</div>
-	</div>
+  
+  <div class="product" ng-repeat="product in products">
+    <h1>{{product.name}}</h1>
+    <div class="variation" ng-repeat="variation in product.variations">
+      <img ng-src="{{variation.white}}">
+      <div class="quantity">
+        <div class="plus button">-</div>
+        <div class="value">0</div>
+        <div class="minus button">+</div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
 <div class="calculator">
-	<div>47</div>
-	<div>Wrap Cuffs </div>
-	<div> X </div>
-	<div>$17</div>
-	<div>=</div>
-	<div>$0</div>
-	<br/>
-	<div>The total for your entire order is $300</div>
+  <div>47</div>
+  <div>Wrap Cuffs </div>
+  <div> X </div>
+  <div>$17</div>
+  <div>=</div>
+  <div>$0</div>
+  <br/>
+  <div>The total for your entire order is $300</div>
 </div>
 
 <div class="order-form">

@@ -7,36 +7,39 @@
 <h2>Order</h2>
 
 <div class="calculator">
-	<div>47</div>
-	<div>Wrap Cuffs </div>
-	<div> X </div>
-	<div>$17</div>
-	<div>=</div>
-	<div>$0</div>
+  <div>47</div>
+  <div>Wrap Cuffs </div>
+  <div> X </div>
+  <div>$17</div>
+  <div>=</div>
+  <div>$0</div>
 </div>
 
 <div class="order-line-up">
-	
-	<div class="product" ng-repeat="product in products">
-		<img src="{{product.image}}">
-		<div class="quantity">
-			<div class="plus button">-</div>
-			<div class="value">0</div>
-			<div class="minus button">+</div>
-		</div>
-	</div>
+  
+  <div class="product" ng-repeat="product in products">
+    <h1>{{product.name}}</h1>
+    <div class="variation" ng-repeat="variation in product.variations">
+      <img ng-src="{{variation.white}}">
+      <div class="quantity">
+        <div class="plus button">-</div>
+        <div class="value">0</div>
+        <div class="minus button">+</div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
 <div class="calculator">
-	<div>47</div>
-	<div>Wrap Cuffs </div>
-	<div> X </div>
-	<div>$17</div>
-	<div>=</div>
-	<div>$0</div>
-	<br/>
-	<div>The total for your entire order is $300</div>
+  <div>47</div>
+  <div>Wrap Cuffs </div>
+  <div> X </div>
+  <div>$17</div>
+  <div>=</div>
+  <div>$0</div>
+  <br/>
+  <div>The total for your entire order is $300</div>
 </div>
 
 <div class="order-form">

@@ -4,43 +4,34 @@ angular.module "Product", []
   templateUrl: "product.html"
   
   controller: ($scope)->
-    showingProduct =
-      index: null
-      scope: null
     
-    getVariation = (productIndex, variationIndex)->
-      variations = $scope.products[productIndex].variations
+    ## LOCALS
+    productIndex = $scope.$index
+    
+    
+    ## SCOPE LOCALS
+    $scope.variation = $scope.product.variations[0]
+    
+    
+    ## HELPERS
+    getVariation = (variationIndex)->
+      variations = $scope.product.variations
       return variations[(variationIndex + variations.length) % variations.length]
-
-    infoIsOpen = (productIndex)->
-      return showingProduct.index is productIndex
     
-    productYPos = (productIndex)->
-      return $scope.products[productIndex].ypos
     
-    getProduct = (productIndex)->
-      return $scope.products[productIndex]
+    ## SCOPE
+    $scope.variationsCount = ()->
+      return $scope.product.variations.length
     
-    $scope.variationsCount = (productIndex)->
-      return getProduct(productIndex).variations.length
+    $scope.getHero = (variationIndex)->
+      return getVariation(variationIndex)?.hero
     
-    $scope.getHero = (productIndex, variationIndex)->
-      return getVariation(productIndex, variationIndex)?.hero
-    
-    $scope.getVerticalPositionStyle = (productIndex)->
-      ypos = if infoIsOpen(productIndex) then productYPos(productIndex) else 0
+    $scope.getVerticalPositionStyle = ()->
+      ypos = if $scope.infoIsOpen(productIndex) then $scope.product.ypos else 0
       translate = "translate(-50%, -#{ypos}%)"
       return style =
         transform: translate
         "-webkit-transform": translate
     
-    $scope.toggleProductInfo = (productIndex, productScope)->
-      showingProduct.scope?.showingProductInfo = false
-      
-      if showingProduct.index is productIndex
-        showingProduct.index = null
-        showingProduct.scope = null
-      else
-        showingProduct.index = productIndex
-        showingProduct.scope = productScope
-        showingProduct.scope?.showingProductInfo = true
+    $scope.changeVariation = (variationIndex)->
+      $scope.variation = getVariation(variationIndex)

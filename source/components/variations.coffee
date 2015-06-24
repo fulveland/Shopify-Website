@@ -9,7 +9,7 @@ angular.module "Variations", []
     animationTime = 400
     animString = " #{animationTime}ms cubic-bezier(.16,.56,.5,1)" # Must begin with a space
     wrapping = true # Whether or not to infinitely wrap around at the left/right ends
-        
+    
     
     ## STATE
     dragStart = 0
@@ -22,7 +22,7 @@ angular.module "Variations", []
     
     ## REFERENCES
     productIndex = scope.$index
-    nVariations = scope.variationsCount(productIndex)
+    nVariations = scope.variationsCount()
     
     slider = element[0].querySelector "horizontal-slider"
     sliderNG = angular.element slider
@@ -57,9 +57,7 @@ angular.module "Variations", []
       scope.offsetA = Math.floor((-scope.offset+2)/3)*3
       scope.offsetB = Math.floor((-scope.offset+1)/3)*3
       scope.offsetC = Math.floor((-scope.offset+0)/3)*3
-      
-      # Function no longer exists
-      # scope.changeVariation(productIndex, scope.offset)
+      scope.changeVariation -scope.offset
     
     enableTransition = (enable = true)->
       setSlider "transition", (if enable then "transform" + animString else null), true
