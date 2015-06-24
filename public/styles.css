@@ -513,97 +513,105 @@ header {
     background-color: #a5c9cf;
     border-bottom: 6px solid #9cc3c9; }
 
+product {
+  display: block;
+  position: relative; }
+
 product-info.showingProductInfo {
   opacity: 1;
-  -webkit-transform: none;
-          transform: none;
-  margin-bottom: 4em; }
+  overflow: visible;
+  transition: opacity 1s, -webkit-transform 1s, height 1s;
+  transition: opacity 1s, transform 1s, height 1s; }
 
 product-info {
-  display: none;
-  position: relative;
-  width: 88.4vmin;
-  min-width: 60vw;
-  margin: -16em auto -2.4em;
-  padding: 2vmin;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: black;
-  z-index: 4;
+  position: absolute;
+  display: block;
+  top: 55%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  transition: opacity 1s, -webkit-transform 1s, height 1s;
+  transition: opacity 1s, transform 1s, height 1s;
   opacity: 0;
-  -webkit-transform: translateY(100px);
-          transform: translateY(100px);
-  transition: opacity 1s, -webkit-transform 1s, margin 1s;
-  transition: opacity 1s, transform 1s, margin 1s; }
-  product-info identity-info {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-align-items: baseline;
-        -ms-flex-align: baseline;
-            align-items: baseline; }
-    product-info identity-info h1 {
-      font-size: 4em;
-      margin: 0 0 0.2em; }
-  product-info descriptive-info {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    font-size: 1.2em; }
-    product-info descriptive-info .character {
-      font-style: italic;
-      margin-right: 3em; }
-  product-info purchasing-info {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-align-items: baseline;
-        -ms-flex-align: baseline;
-            align-items: baseline;
-    max-width: 36rem;
-    margin: 1em auto 0;
-    font-size: 1.4em; }
-    product-info purchasing-info select {
-      border: 1px solid #706F6D;
-      background: transparent;
-      padding: 0 0.4em 0.1em; }
-    product-info purchasing-info .add-to-cart {
-      border-bottom: 1px solid #706F6D; }
-  product-info stub-info {
-    display: block;
-    text-align: center;
-    margin: .5em 0 0; }
-    product-info stub-info div {
-      display: inline-block; }
-    product-info stub-info h3 {
-      padding: .3rem;
-      display: inline-block; }
-  product-info line-info, product-info shop-info {
-    display: block;
-    display: none;
-    max-width: 36rem;
-    margin: 0 auto; }
-    product-info line-info h3, product-info shop-info h3 {
-      margin: 1em 0 0; }
-    product-info line-info h2, product-info shop-info h2 {
-      margin: 1.6em 0 0; }
-    product-info line-info .tut, product-info shop-info .tut {
-      width: 6.8rem;
-      display: inline-block;
-      vertical-align: top;
-      margin: 0 1.5rem 0 0; }
-      product-info line-info .tut img, product-info shop-info .tut img {
-        width: 100%; }
-      product-info line-info .tut p, product-info shop-info .tut p {
-        text-align: center; }
-  product-info shop-info {
-    padding-bottom: 100px; }
+  z-index: 100; }
+  product-info .wrapper {
+    width: 60em;
+    max-width: 99vw;
+    margin: 0 auto;
+    padding: 2vw;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px -4px rgba(0, 0, 30, 0.05);
+    -webkit-font-smoothing: subpixel-antialiased; }
+    product-info .wrapper identity-info {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-align-items: baseline;
+          -ms-flex-align: baseline;
+              align-items: baseline; }
+      product-info .wrapper identity-info h1 {
+        font-size: 4em;
+        margin: 0 0 0.2em; }
+    product-info .wrapper descriptive-info {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      font-size: 1.2em; }
+      product-info .wrapper descriptive-info .character {
+        font-style: italic;
+        margin-right: 3em; }
+    product-info .wrapper purchasing-info {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-align-items: baseline;
+          -ms-flex-align: baseline;
+              align-items: baseline;
+      max-width: 36rem;
+      margin: 1em auto 0;
+      font-size: 1.4em; }
+      product-info .wrapper purchasing-info select {
+        border: 1px solid #706F6D;
+        background: transparent;
+        padding: 0 0.4em 0.1em; }
+      product-info .wrapper purchasing-info .add-to-cart {
+        border-bottom: 1px solid #706F6D; }
+    product-info .wrapper stub-info {
+      display: block;
+      text-align: center;
+      margin: .5em 0 0; }
+      product-info .wrapper stub-info div {
+        display: inline-block; }
+      product-info .wrapper stub-info h3 {
+        padding: .3rem;
+        display: inline-block; }
+    product-info .wrapper line-info, product-info .wrapper shop-info {
+      display: block;
+      display: none;
+      max-width: 36rem;
+      margin: 0 auto; }
+      product-info .wrapper line-info h3, product-info .wrapper shop-info h3 {
+        margin: 1em 0 0; }
+      product-info .wrapper line-info h2, product-info .wrapper shop-info h2 {
+        margin: 1.6em 0 0; }
+      product-info .wrapper line-info .tut, product-info .wrapper shop-info .tut {
+        width: 6.8rem;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 1.5rem 0 0; }
+        product-info .wrapper line-info .tut img, product-info .wrapper shop-info .tut img {
+          width: 100%; }
+        product-info .wrapper line-info .tut p, product-info .wrapper shop-info .tut p {
+          text-align: center; }
+    product-info .wrapper shop-info {
+      padding-bottom: 100px; }
 
 variations {
   display: block;

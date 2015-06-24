@@ -831,14 +831,14 @@
 
   angular.module("StubProducts", []).constant("StubProducts", StubProducts = [
     {
-      ypos: 28,
+      ypos: 23,
       variations: [
         {
           hero: "assets/raw-ring.jpg"
         }
       ]
     }, {
-      ypos: 25,
+      ypos: 18,
       variations: [
         {
           hero: "assets/coffee-and-crystals-howlite.jpg"
@@ -861,7 +861,7 @@
         }
       ]
     }, {
-      ypos: 39,
+      ypos: 33,
       variations: [
         {
           hero: "assets/fuzzy-cuff-1.jpg"

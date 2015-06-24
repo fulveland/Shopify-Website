@@ -4,7 +4,7 @@ angular.module "StubProducts", []
   [
     # RAW RING
     {
-      ypos: 28
+      ypos: 23
       variations: [
         { hero:"assets/raw-ring.jpg" }
       ]
@@ -12,7 +12,7 @@ angular.module "StubProducts", []
     
     # COFFEE AND CRYSTALS
     {
-      ypos: 25
+      ypos: 18
       variations: [
         { hero:"assets/coffee-and-crystals-howlite.jpg" }
         { hero:"assets/coffee-and-crystals-pyrite.jpg" }
@@ -25,10 +25,10 @@ angular.module "StubProducts", []
         { hero:"assets/coffee-and-crystals-goldstone.jpg" }
       ]
     }
-  
+    
     # FUZZY CUFF
     {
-      ypos: 39
+      ypos: 33
       variations: [
         { hero:"assets/fuzzy-cuff-1.jpg" }
         { hero:"assets/fuzzy-cuff-2.jpg" }
